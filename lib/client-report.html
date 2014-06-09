@@ -209,15 +209,20 @@
 
 <template name="velocityAggregateReports">
     <table id="velocityAggregateReports"
+           class="table"
            style="display: {{isVisible}};">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Result</th>
-        </tr>
-        {{#each aggregateReports}}
-        {{> velocityAggregateReport}}
-        {{/each}}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each aggregateReports}}
+            {{> velocityAggregateReport}}
+            {{/each}}
+        </tbody>
     </table>
 </template>
 
@@ -231,24 +236,29 @@
 
 <template name="velocityTestReports">
     <table id="velocityTestReports"
+           class="table"
            style="display: {{isVisible}};">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Framework</th>
-            <th>Result</th>
-            <th>Ancestors</th>
-            <th>Timestamp</th>
-            <th>Time</th>
-            <th>Async</th>
-            <th>TimeOut</th>
-            <th>Pending</th>
-            <th>FailureType</th>
-            <th>FailureMessage</th>
-        </tr>
-        {{#each testReports}}
-        {{> velocityTestReport}}
-        {{/each}}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Framework</th>
+                <th>Result</th>
+                <th>Ancestors</th>
+                <th>Timestamp</th>
+                <th>Time</th>
+                <th>Async</th>
+                <th>TimeOut</th>
+                <th>Pending</th>
+                <th>FailureType</th>
+                <th>FailureMessage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each testReports}}
+            {{> velocityTestReport}}
+            {{/each}}
+        </tbody>
     </table>
 </template>
 
@@ -270,16 +280,20 @@
 </template>
 
 <template name="velocityLogs">
-    <table id="velocityLogs" style="display: {{isVisible}};">
-        <tr>
-            <th>Timestamp</th>
-            <th>Type</th>
-            <th>Message</th>
-            <th>Framework</th>
-        </tr>
-        {{#each logs}}
-        {{> velocityLog}}
-        {{/each}}
+    <table id="velocityLogs" class="table" style="display: {{isVisible}};">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Type</th>
+                <th>Message</th>
+                <th>Framework</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each logs}}
+            {{> velocityLog}}
+            {{/each}}
+        </tbody>
     </table>
 </template>
 
@@ -294,16 +308,21 @@
 
 <template name="velocityTestFiles">
     <table id="velocityTestFiles"
+           class="table"
            style="display: {{isVisible}};">
-        <tr>
-            <th>ID</th>
-            <th>Relative Path</th>
-            <th>Target Framework</th>
-            <th>Last Modified</th>
-        </tr>
-        {{#each testFiles}}
-        {{> velocityTestFile}}
-        {{/each}}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Relative Path</th>
+                <th>Target Framework</th>
+                <th>Last Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each testFiles}}
+            {{> velocityTestFile}}
+            {{/each}}
+        </tbody>
     </table>
 </template>
 
