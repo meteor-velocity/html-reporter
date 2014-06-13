@@ -3,4 +3,28 @@
 // Apply bootstrap formatting only to the Velocity overlay. 
 #velocityOverlay {
   @import "bootstrap/bootstrap.imports.less";
+
+  background: rgba(255, 255, 255, 1);
+  color: black;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  z-index: 2147483647;
+
+  .pending, .undefined {
+    background: rgba(255, 255, 51, .6);
+  }
+
+  .passed, .completed {
+    background: rgba(0, 192, 0, .5);
+  }
+
+  .failed {
+    background: rgba(255, 0, 0, .5);
+  }
+
 }
+
+
+
