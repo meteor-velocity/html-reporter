@@ -1,0 +1,60 @@
+// To update bootstrap: The files in the src subdirectory were pulled directly 
+// from https://github.com/simison/bootstrap3-less/tree/master/lib
+// You may be able to just replace those files. The files in this directory are modified 
+// and may need a little more care if bootstrap changes significantly.
+
+// This file is not watched by Meteor, so you will have to trigger a code rebuild
+// manually after making changes.
+
+// Core variables and mixins
+@import "@{bootstrap-less-path}variables.import.less";
+@import "@{bootstrap-less-path}mixins.import.less";
+
+// Override default core variables
+@import "variables.imports.less";
+
+// Reset
+@import "@{bootstrap-less-path}normalize.import.less";
+@import "@{bootstrap-less-path}print.import.less";
+
+// Core CSS
+@import "@{bootstrap-less-path}scaffolding.import.less";
+@import "@{bootstrap-less-path}type.import.less";
+@import "@{bootstrap-less-path}code.import.less";
+@import "@{bootstrap-less-path}grid.import.less";
+@import "@{bootstrap-less-path}tables.import.less";
+@import "@{bootstrap-less-path}forms.import.less";
+@import "@{bootstrap-less-path}buttons.import.less";
+
+// Components
+@import "@{bootstrap-less-path}component-animations.import.less";
+@import "@{bootstrap-less-path}glyphicons.import.less";
+// @import "@{bootstrap-less-path}dropdowns.import.less";
+// @import "@{bootstrap-less-path}button-groups.import.less";
+// @import "@{bootstrap-less-path}input-groups.import.less";
+@import "@{bootstrap-less-path}navs.import.less";
+// @import "@{bootstrap-less-path}navbar.import.less";
+// @import "@{bootstrap-less-path}breadcrumbs.import.less";
+// @import "@{bootstrap-less-path}pagination.import.less";
+// @import "@{bootstrap-less-path}pager.import.less";
+@import "@{bootstrap-less-path}labels.import.less";
+@import "@{bootstrap-less-path}badges.import.less";
+// @import "@{bootstrap-less-path}jumbotron.import.less";
+// @import "@{bootstrap-less-path}thumbnails.import.less";
+@import "@{bootstrap-less-path}alerts.import.less";
+@import "@{bootstrap-less-path}progress-bars.import.less";
+// @import "@{bootstrap-less-path}media.import.less";
+// @import "@{bootstrap-less-path}list-group.import.less";
+@import "@{bootstrap-less-path}panels.import.less";
+@import "@{bootstrap-less-path}wells.import.less";
+@import "@{bootstrap-less-path}close.import.less";
+
+// Components w/ JavaScript
+// @import "@{bootstrap-less-path}modals.import.less";
+// @import "@{bootstrap-less-path}tooltip.import.less";
+// @import "@{bootstrap-less-path}popovers.import.less";
+// @import "@{bootstrap-less-path}carousel.import.less";
+
+// Utility classes
+@import "@{bootstrap-less-path}utilities.import.less";
+@import "@{bootstrap-less-path}responsive-utilities.import.less";

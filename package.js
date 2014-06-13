@@ -8,8 +8,10 @@ Package.on_use(function(api) {
   api.add_files('lib/client-report.html', 'client');
   api.add_files('lib/client-report.js', 'client');
   api.add_files('lib/client-report.less', 'client');
-  api.add_files('lib/bootstrap.less', 'client');
-  api.add_files('lib/bootstrap/fonts/glyphicons-halflings-regular.eot', 'client');
-  api.add_files('lib/bootstrap/fonts/glyphicons-halflings-regular.ttf', 'client');
-  api.add_files('lib/bootstrap/fonts/glyphicons-halflings-regular.woff', 'client');
+
+  //bootstrap glyphicons
+  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.eot', 'client');
+  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.ttf', 'client');
+  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.woff', 'client');
+  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.svg', 'client');
 });
