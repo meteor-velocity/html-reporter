@@ -6,8 +6,20 @@
     height: 20px;
     border-radius: 10px;
     z-index: 2147483647;
-}
+    cursor: pointer;
 
+    &.pending, &.undefined {
+        background: rgba(255, 255, 51, .6);
+    }
+
+    &.passed, &.completed {
+        background: rgba(0, 192, 0, .5);
+    }
+
+    &.failed {
+        background: rgba(255, 0, 0, .5);
+    }
+}
 
 #velocity-status-widget.failed:after {
     content: " ";
