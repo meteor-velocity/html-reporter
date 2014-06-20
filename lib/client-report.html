@@ -1,123 +1,117 @@
 <body>
-{{> velocity}}
+  {{> velocity}}
 </body>
 
 <template name="velocity">
-
-    <div id="velocityOverlay" style="display: {{overlayIsVisible}};">
-        <h3>Aggregate Reports
-            <a class="display-toggle" data-target="velocityAggregateReports"
-               href="javascript:void(0);">(show/hide)</a></h3>
-        {{> velocityAggregateReports}}
-        <h3>Test Reports
-            <a class="display-toggle" data-target="velocityTestReports"
-               href="javascript:void(0);">(show/hide)</a></h3>
-        {{> velocityTestReports}}
-        <h3>Logs
-            <a class="display-toggle" data-target="velocityLogs"
-               href="javascript:void(0);">(show/hide)</a></h3>
-        {{> velocityLogs}}
-        <h3>Test Files
-            <a class="display-toggle" data-target="velocityTestFiles"
-               href="javascript:void(0);">(show/hide)</a></h3>
-        {{> velocityTestFiles}}
+  <div id="velocityOverlay" class="container" style="display: {{overlayIsVisible}};">
+  
+    <div class="row">
+      <div class="col-xs-3">
+      {{> velocityAggregateReports}}
+      </div>
+      <div class="col-xs-9">
+        {{#each reportTree}}
+          {{> velocityReports}}
+        {{/each}}
+      </div>
     </div>
 
-    <a id="velocity-status-widget"
-       class="{{statusWidgetClass}} display-toggle"
-       data-target="velocityOverlay"
-       href="javascript:void(0);"></a>
+    <h3>Logs
+      <a class="display-toggle" data-target="velocityLogs">(show/hide)</a></h3>
+    {{> velocityLogs}}
+        
+    <h3>Test Files
+      <a class="display-toggle" data-target="velocityTestFiles"
+         href="javascript:void(0);">(show/hide)</a></h3>
+    {{> velocityTestFiles}}
+
+  </div>
+
+  <!-- The status widget is the display-toggle circle in the upper-right -->
+  <a id="velocity-status-widget"
+     class="{{statusWidgetClass}} display-toggle"
+     data-target="velocityOverlay"></a>
 
 </template>
 
 <template name="velocityAggregateReports">
-    <table id="velocityAggregateReports"
-           class="table"
-           style="display: {{isVisible}};">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each aggregateReports}}
-            {{> velocityAggregateReport}}
-            {{/each}}
-        </tbody>
-    </table>
+  <ul class="nav nav-pills nav-stacked">
+    {{#each aggregateReports}}
+      <li class={{maybeActive}}><a href="#">
+        {{> resultLabel }}
+        {{name}}
+      </a></li>
+    {{/each}}
+  </ul>  
 </template>
 
-<template name="velocityAggregateReport">
-    <tr class="{{result}}">
-        <td>{{_id}}</td>
-        <td>{{name}}</td>
-        <td>{{result}}</td>
-    </tr>
-</template>
-
-<template name="velocityTestReports">
-    <table id="velocityTestReports"
-           class="table"
-           style="display: {{isVisible}};">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Framework</th>
-                <th>Result</th>
-                <th>Ancestors</th>
-                <th>Timestamp</th>
-                <th>Time</th>
-                <th>Async</th>
-                <th>TimeOut</th>
-                <th>Pending</th>
-                <th>FailureType</th>
-                <th>FailureMessage</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each testReports}}
-            {{> velocityTestReport}}
+<template name="velocityReports">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{name}}</h3>
+    </div>
+    <div class="panel-body">
+      {{#each this.suites}}
+      <h4>{{name}}</h4>
+        <table class="table table-hover">
+          <thead>
+          </thead>
+          <tbody>
+            {{#each this.results}}
+              {{> velocityTestReport}}
             {{/each}}
-        </tbody>
-    </table>
+          </tbody>
+        </table>
+      {{/each}}
+    </div>
+  </div>
+
 </template>
 
 <template name="velocityTestReport">
-    <tr class="{{result}}">
-        <td>{{_id}}</td>
-        <td>{{name}}</td>
-        <td>{{framework}}</td>
-        <td>{{result}}</td>
-        <td>{{ancestors}}</td>
-        <td>{{timestamp}}</td>
-        <td>{{time}}</td>
-        <td>{{async}}</td>
-        <td>{{timeOut}}</td>
-        <td>{{pending}}</td>
-        <td>{{failureType}}</td>
-        <td>{{failureMessage}}</td>
-    </tr>
+  <tr>
+    <td class="result-label">{{> resultLabel }}</td>
+    <td>
+      <div>
+        {{{name}}}  {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
+        {{#if failed}}
+          <br><br>
+          <strong>Type:</strong> {{failureType}} <strong>Message:</strong> {{failureMessage}}
+          <br>
+          <pre class='stack-trace pre-scrollable'>
+            {{failureStackTrace}}
+          </pre>
+        {{/if}}
+      </div>
+    </td>
+    <td class="time-display">{{time}} ms</td>
+  </tr>
+  
+</template>
+
+<template name='resultLabel'>
+  <span class="label {{labelColor result}}">
+    <span class="{{glyphiconType result}}"></span>
+  </span>
+  &nbsp;
 </template>
 
 <template name="velocityLogs">
-    <table id="velocityLogs" class="table" style="display: {{isVisible}};">
-        <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Type</th>
-                <th>Message</th>
-                <th>Framework</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each logs}}
-            {{> velocityLog}}
-            {{/each}}
-        </tbody>
-    </table>
+  <table id="velocityLogs" class="table" style="display: {{isVisible}};">
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Type</th>
+        <th>Message</th>
+        <th>Framework</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each logs}}
+      {{> velocityLog}}
+      {{/each}}
+    </tbody>
+  </table>
 </template>
 
 <template name="velocityLog">
