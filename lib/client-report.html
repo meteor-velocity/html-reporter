@@ -43,6 +43,13 @@
       </a></li>
     {{/each}}
   </ul>  
+
+  <div class="checkbox">
+    <label>
+      <input id="hideSuccessful" type="checkbox" {{hideSuccessfulIsChecked}}> Hide succesful tests
+    </label>
+  </div>
+
 </template>
 
 <template name="velocityReports">
@@ -69,24 +76,29 @@
 </template>
 
 <template name="velocityTestReport">
-  <tr>
-    <td class="result-label">{{> resultLabel }}</td>
-    <td>
-      <div>
-        {{{name}}}  {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
-        {{#if failed}}
-          <br><br>
-          <strong>Type:</strong> {{failureType}} <strong>Message:</strong> {{failureMessage}}
-          <br>
-          <pre class='stack-trace pre-scrollable'>
-            {{failureStackTrace}}
-          </pre>
-        {{/if}}
-      </div>
-    </td>
-    <td class="time-display">{{time}} ms</td>
-  </tr>
-  
+  {{#if reportNotHidden}}
+    <tr>
+      <td class="result-label">{{> resultLabel }}</td>
+      <td>
+        <div>
+          {{{name}}}  {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
+          {{#if failed}}
+            <br><br>
+            <strong>Type:</strong> {{failureType}} <strong>Message:</strong> {{failureMessage}}
+            <br>
+            {{#if failureStackTrace}}
+              <pre class='stack-trace pre-scrollable'>
+                {{failureStackTrace}}
+              </pre>
+            {{else}}
+              No stack trace available.
+            {{/if}}
+          {{/if}}
+        </div>
+      </td>
+      <td class="time-display">{{time}} ms</td>
+    </tr>
+  {{/if}}
 </template>
 
 <template name='resultLabel'>
