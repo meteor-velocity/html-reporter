@@ -15,32 +15,63 @@
   //font-size: 10px;
   z-index: 2147483647;
 
-  .pending, .undefined {
-    background: rgba(255, 255, 51, .6);
-  }
-
-  .passed, .completed {
-    background: rgba(0, 192, 0, .5);
-  }
-
-  .failed {
-    background: rgba(255, 0, 0, .5);
+  .reports-pane{
+    height:100vh;
+    overflow-x: auto;
   }
 
   // normalize display of test result tables between suites
-  .time-display{
-    width: 8em;
-  }
   .result-label{
     width: 3em;
   }
+  .time-display{
+    width: 4.5em;
+    text-align: right;
+  }
 
-
+  // make stack trace horizontally scrollable
   pre.stack-trace{
-    width: 800px; //XXX width jumps to ~1492px without this hardcode :-/
+    margin-top: 5px;
     overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+  }
+
+  h4.suite{
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: solid 1px #ddd;
+    font-size: 100%;
+
+    &.failed{
+      // border-top: solid 2px red;
+    }
+  }
+
+  ul.reports{
+    list-style: none;
+
+    table {
+      margin-bottom: 0;
+      font-size: 100%;
+    }
+
+    td{
+      border-top: none !important;
+      padding: 0 !important;
+    }
+
+    li{
+      margin-top: 10px;
+
+      &:first-child{
+        margin-top: 15px;
+      }
+    }
+    .main-result{
+    }
+    .failed-test-info{
+      margin-top: 10px;
+    }
   }
 }
-
-
-

@@ -9,24 +9,25 @@
       <div class="col-xs-3">
       {{> velocityAggregateReports}}
       </div>
-      <div class="col-xs-9">
-        {{#each reportTree}}
+      <div class="col-xs-9 reports-pane">
+        {{#each frameworks}}
           {{> velocityReports}}
         {{/each}}
+
+        <h3>Logs
+          <a class="display-toggle" data-target="velocityLogs">(show/hide)</a></h3>
+        {{> velocityLogs}}
+
+        <h3>Test Files
+          <a class="display-toggle" data-target="velocityTestFiles"
+             href="javascript:void(0);">(show/hide)</a></h3>
+        {{> velocityTestFiles}}
+
+        <h3>Mocha iFrame</h3>
+        {{> mochaweb}}
       </div>
     </div>
 
-    <h3>Logs
-      <a class="display-toggle" data-target="velocityLogs">(show/hide)</a></h3>
-    {{> velocityLogs}}
-        
-    <h3>Test Files
-      <a class="display-toggle" data-target="velocityTestFiles"
-         href="javascript:void(0);">(show/hide)</a></h3>
-    {{> velocityTestFiles}}
-
-    <h3>Mocha iFrame</h3>
-    {{> mochaweb}}
   </div>
 
   <!-- The status widget is the display-toggle circle in the upper-right -->
@@ -37,6 +38,8 @@
 </template>
 
 <template name="velocityAggregateReports">
+  <h1>Velocity</h1>
+  <div class="alert alert-success"> X of X Passed</div>
   <ul class="nav nav-pills nav-stacked">
     {{#each aggregateReports}}
       <li class={{maybeActive}}><a href="#">
@@ -46,10 +49,14 @@
     {{/each}}
   </ul>  
 
-  <div class="checkbox">
-    <label>
-      <input id="hideSuccessful" type="checkbox" {{hideSuccessfulIsChecked}}> Hide succesful tests
-    </label>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="checkbox">
+        <label>
+          <input id="hideSuccessful" type="checkbox" {{hideSuccessfulIsChecked}}> Hide succesful tests
+        </label>
+      </div>
+    </div>
   </div>
 
 </template>
@@ -57,49 +64,57 @@
 <template name="velocityReports">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{{name}}</h3>
+      <h3 class="panel-title">
+        {{> resultLabel result=frameworkStatus}}
+        {{name}}
+      </h3>
     </div>
-    <div class="panel-body">
-      {{#each this.suites}}
-      <h4>{{name}}</h4>
-        <table class="table table-hover">
-          <thead>
-          </thead>
-          <tbody>
-            {{#each this.results}}
+    <div class="panel-body framework">
+      {{#each suites}}
+        {{#if suiteNotHidden}}
+          <h4 class="suite {{suiteStatus}}">
+            {{suite}}
+          </h4>
+          <ul class="reports">
+            {{#each reports}}
               {{> velocityTestReport}}
             {{/each}}
-          </tbody>
-        </table>
+          </ul>
+        {{/if}}
       {{/each}}
     </div>
   </div>
-
 </template>
 
 <template name="velocityTestReport">
   {{#if reportNotHidden}}
-    <tr>
-      <td class="result-label">{{> resultLabel }}</td>
-      <td>
-        <div>
-          {{{name}}}  {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
-          {{#if failed}}
-            <br><br>
-            <strong>Type:</strong> {{failureType}} <strong>Message:</strong> {{failureMessage}}
-            <br>
-            {{#if failureStackTrace}}
-              <pre class='stack-trace pre-scrollable'>
-                {{failureStackTrace}}
-              </pre>
-            {{else}}
-              No stack trace available.
-            {{/if}}
-          {{/if}}
-        </div>
-      </td>
-      <td class="time-display">{{time}} ms</td>
-    </tr>
+  <li>
+    <div class="main-result">
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <td class="result-label">{{> resultLabel }}</td>
+          <td class="test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
+          <td class="time-display">{{time}} ms</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+    {{#if failed}}
+      <div class="failed-test-info">
+        <strong>Failed:</strong> {{failureMessage}}
+        <br>
+        {{#if failureStackTrace}}
+          <pre class='stack-trace pre-scrollable'>
+            {{failureStackTrace}}
+          </pre>
+        {{else}}
+          No stack trace available.
+        {{/if}}
+      </div>
+    {{/if}}
+  </li>
   {{/if}}
 </template>
 
