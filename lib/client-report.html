@@ -6,25 +6,31 @@
   <div id="velocityOverlay" class="container" style="display: {{overlayIsVisible}};">
   
     <div class="row">
-      <div class="col-xs-3">
-      {{> velocityAggregateReports}}
+      <div class="col-xs-3 control-pane">
+
+      {{> velocityControlPanel}}
       </div>
-      <div class="col-xs-9 reports-pane">
+      <div class="col-xs-9 content-pane">
+
         {{#each frameworks}}
           {{> velocityReports}}
         {{/each}}
 
-        <h3>Logs
-          <a class="display-toggle" data-target="velocityLogs">(show/hide)</a></h3>
-        {{> velocityLogs}}
+        {{#if active 'showLogs'}}
+          <h3>Logs</h3>
+          {{> velocityLogs}}
+        {{/if}}
 
-        <h3>Test Files
-          <a class="display-toggle" data-target="velocityTestFiles"
-             href="javascript:void(0);">(show/hide)</a></h3>
-        {{> velocityTestFiles}}
+        {{#if active 'showFiles'}}
+          <h3>Test Files</h3>
+          {{> velocityTestFiles}}
+        {{/if}}
 
-        <h3>Mocha iFrame</h3>
-        {{> mochaweb}}
+        <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+            <h3>Mocha iFrame</h3>
+            {{> mochaweb}}
+        </div>
+
       </div>
     </div>
 
@@ -37,25 +43,38 @@
 
 </template>
 
-<template name="velocityAggregateReports">
+<template name="velocityControlPanel">
   <h1>Velocity</h1>
-  <div class="alert alert-success"> X of X Passed</div>
+  <div class="overall-outcome">
+    <h1> {{> resultLabel aggregateResult}} </h1>
+    <div class="test-counts"> {{totalPassedTestCount}} of {{totalTestCount}} Passed</div>
+  </div>
+
+  <div class="controls">
   <ul class="nav nav-pills nav-stacked">
-    {{#each aggregateReports}}
+    {{#each frameworks}}
       <li class={{maybeActive}}><a href="#">
-        {{> resultLabel }}
+        {{> resultLabel frameworkStatus}}
         {{name}}
+        {{#if frameworkFailedCount}}
+          <span class="badge">{{frameworkFailedCount}}</span>
+        {{/if}}
       </a></li>
     {{/each}}
   </ul>  
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="checkbox">
-        <label>
-          <input id="hideSuccessful" type="checkbox" {{hideSuccessfulIsChecked}}> Hide succesful tests
-        </label>
+    <div class="options">
+    <h3>Options</h3>
+
+      <div class="btn-group-vertical">
+        <button id="showSuccessful" class="btn  btn-default control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
+        <button id="showLogs" class="btn btn-default control-toggle {{showActive "showLogs"}}">Show logs</button>
+        <button id="showFiles" class="btn btn-default control-toggle {{showActive "showFiles"}}">Show files</button>
+        {{#if mochaPresent}}
+        <button id="showMochaIframe" class="btn btn-default control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
+        {{/if}}
       </div>
+
     </div>
   </div>
 
@@ -70,6 +89,24 @@
       </h3>
     </div>
     <div class="panel-body framework">
+      <div class="results">
+      {{#if frameworkTotalTestCount}}
+        <span class='framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
+      {{else}}
+        {{#if noFrameworkFiles}}
+          <div class="addDemoTests">It appears that you don't have any tests for this framework. Would you like to add some tests?</div>
+          <div id="add-demo-test-buttons">
+            <button class="btn btn-primary">Add working sample tests</button>
+            <button class="btn btn-primary">Add empty test scaffolding</button>
+          </div>
+          {{else}}
+          <div>
+            Test files are present, but no tests were detected.
+          </div>
+        {{/if}}
+      {{/if}}
+      </div>
+
       {{#each suites}}
         {{#if suiteNotHidden}}
           <h4 class="suite {{suiteStatus}}">
@@ -119,14 +156,14 @@
 </template>
 
 <template name='resultLabel'>
-  <span class="label {{labelColor result}}">
+  <span class="label {{labelColor result}} result-label">
     <span class="{{glyphiconType result}}"></span>
   </span>
   &nbsp;
 </template>
 
 <template name="velocityLogs">
-  <table id="velocityLogs" class="table" style="display: {{isVisible}};">
+  <table id="velocityLogs" class="table">
     <thead>
       <tr>
         <th>Timestamp</th>
@@ -154,8 +191,7 @@
 
 <template name="velocityTestFiles">
     <table id="velocityTestFiles"
-           class="table"
-           style="display: {{isVisible}};">
+           class="table">
         <thead>
             <tr>
                 <th>ID</th>
