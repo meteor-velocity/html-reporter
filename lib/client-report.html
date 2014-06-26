@@ -4,14 +4,14 @@
 
 <template name="velocity">
   <div id="velocityOverlay" class="container" style="display: {{overlayIsVisible}};">
-  
-    <div class="row">
-      <div class="col-xs-3 control-pane">
+
+    <div class="row control-row">
+      <div class="col-md-3 control-pane">
 
       {{> velocityControlPanel}}
       </div>
-      <div class="col-xs-9 content-pane">
-
+      <div class="col-md-9 content-pane">
+        <h2>Results</h2>
         {{#each frameworks}}
           {{> velocityReports}}
         {{/each}}
@@ -51,29 +51,35 @@
   </div>
 
   <div class="controls">
-  <ul class="nav nav-pills nav-stacked">
-    {{#each frameworks}}
-      <li class={{maybeActive}}><a href="#">
-        {{> resultLabel frameworkStatus}}
-        {{name}}
-        {{#if frameworkFailedCount}}
-          <span class="badge">{{frameworkFailedCount}}</span>
-        {{/if}}
-      </a></li>
-    {{/each}}
-  </ul>  
+  <div class="framework-nav">
+    
+    <h3>Summary</h3>
+    <ul class="nav nav-pills nav-stacked">
+      {{#each frameworks}}
+        <li class={{maybeActive}}><a href="#">
+          {{> resultLabel frameworkStatus}}
+          {{name}}
+          {{#if frameworkFailedCount}}
+            <span class="badge">{{frameworkFailedCount}}</span>
+          {{/if}}
+        </a></li>
+      {{/each}}
+    </ul>  
+  </div>
+  <div class="options-nav">
+    
+      <div class="options">
 
-    <div class="options">
-    <h3>Options</h3>
-
-      <div class="btn-group-vertical">
-        <button id="showSuccessful" class="btn  btn-default control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
-        <button id="showLogs" class="btn btn-default control-toggle {{showActive "showLogs"}}">Show logs</button>
-        <button id="showFiles" class="btn btn-default control-toggle {{showActive "showFiles"}}">Show files</button>
-        {{#if mochaPresent}}
-        <button id="showMochaIframe" class="btn btn-default control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
-        {{/if}}
-      </div>
+        <div class="btn-group-vertical">
+          <h3>Options</h3>
+          <button id="showSuccessful" class="btn  btn-default control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
+          <button id="showLogs" class="btn btn-default control-toggle {{showActive "showLogs"}}">Show logs</button>
+          <button id="showFiles" class="btn btn-default control-toggle {{showActive "showFiles"}}">Show files</button>
+          {{#if mochaPresent}}
+          <button id="showMochaIframe" class="btn btn-default control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
+          {{/if}}
+        </div>
+  </div>
 
     </div>
   </div>
