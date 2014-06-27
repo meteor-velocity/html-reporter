@@ -1,0 +1,8 @@
+{
+  "name":"velocity-html-reporter",
+  "description":"Reactive Velocity test reports in your app.",
+  "homepage":"https://github.com/rissem/velocity-html-reporter",
+  "author":"Robert Dickert",
+  "version":"0.1.0",
+  "git": "https://github.com/rissem/velocity-html-reporter.git"
+}
