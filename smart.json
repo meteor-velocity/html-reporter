@@ -4,5 +4,8 @@
   "homepage":"https://github.com/rdickert/velocity-html-reporter",
   "author":"Robert Dickert",
   "version":"0.1.1",
-  "git": "https://github.com/rdickert/velocity-html-reporter.git"
+  "git": "https://github.com/rdickert/velocity-html-reporter.git",
+  "packages": {
+    "velocity": ""
+  }
 }
