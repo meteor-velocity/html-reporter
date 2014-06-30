@@ -26,10 +26,12 @@
           {{> velocityTestFiles}}
         {{/if}}
 
+        {{#if mochaPresent}}
         <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
             <h3>Mocha iFrame</h3>
             {{> mochaweb}}
         </div>
+        {{/if}}
 
       </div>
     </div>
