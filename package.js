@@ -1,5 +1,5 @@
 Package.describe({
-  summary: "Velocity HTML Reporter"
+  summary: "Reactive Velocity test reports in your app."
 })
 
 Package.on_use(function(api) {
