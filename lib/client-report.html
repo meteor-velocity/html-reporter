@@ -3,13 +3,18 @@
 </body>
 
 <template name="velocity">
+
   <div id="velocityOverlay" class="container" style="display: {{overlayIsVisible}};">
+
+    {{#if resetting}}
+      {{> velocityResetNotification}}
+    {{/if}}
 
     <div class="row control-row">
       <div class="col-md-3 control-pane">
-
-      {{> velocityControlPanel}}
+        {{> velocityControlPanel}}
       </div>
+
       <div class="col-md-9 content-pane">
         <h2>Results</h2>
         {{#each frameworks}}
@@ -97,12 +102,11 @@
         {{#if noFrameworkFiles}}
           <div class="addDemoTests">It appears that you don't have any tests for this framework. Would you like to add some tests?</div>
           <div id="add-demo-test-buttons">
-            <button class="btn btn-primary">Add working sample tests</button>
-            <button class="btn btn-primary">Add empty test scaffolding</button>
+            <button class="btn btn-primary copy-sample-tests">Add {{name}} sample tests</button>
           </div>
           {{else}}
           <div>
-            Test files are present, but no tests were detected.
+            Loading <img src="packages/velocity-html-reporter/lib/spinner.gif" alt="Loading">
           </div>
         {{/if}}
       {{/if}}
@@ -216,4 +220,17 @@
     <td>{{targetFramework}}</td>
     <td>{{lastModified}}</td>
   </tr>
+</template>
+
+<template name="velocityResetNotification">
+  <div id="velocityResetNotification">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Please wait</h3>
+      </div>
+      <div class="panel-body">
+        Velocity is updating your files.
+      </div>
+    </div>
+  </div>
 </template>

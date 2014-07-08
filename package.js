@@ -18,5 +18,7 @@ Package.on_use(function(api) {
   api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.woff', 'client');
   api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.svg', 'client');
 
+  api.add_files('lib/spinner.gif');
+
   // api.export('reamplify', ['client']);
 });
