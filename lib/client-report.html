@@ -3,44 +3,41 @@
 </body>
 
 <template name="velocity">
+  <div id="velocityOverlay" style="display: {{overlayIsVisible}};">
+    <div class="container">
+      {{#if resetting}}
+        {{> velocityResetNotification}}
+      {{/if}}
 
-  <div id="velocityOverlay" class="container" style="display: {{overlayIsVisible}};">
+      <div class="row control-row">
+        <div class="col-md-3 control-pane">
+          {{> velocityControlPanel}}
+        </div>
+        <div class="col-md-9 content-pane">
+          <h2>Results</h2>
+          {{#each frameworks}}
+            {{> velocityReports}}
+          {{/each}}
 
-    {{#if resetting}}
-      {{> velocityResetNotification}}
-    {{/if}}
+          {{#if active 'showLogs'}}
+            <h3>Logs</h3>
+            {{> velocityLogs}}
+          {{/if}}
 
-    <div class="row control-row">
-      <div class="col-md-3 control-pane">
-        {{> velocityControlPanel}}
-      </div>
+          {{#if active 'showFiles'}}
+            <h3>Test Files</h3>
+            {{> velocityTestFiles}}
+          {{/if}}
 
-      <div class="col-md-9 content-pane">
-        <h2>Results</h2>
-        {{#each frameworks}}
-          {{> velocityReports}}
-        {{/each}}
-
-        {{#if active 'showLogs'}}
-          <h3>Logs</h3>
-          {{> velocityLogs}}
-        {{/if}}
-
-        {{#if active 'showFiles'}}
-          <h3>Test Files</h3>
-          {{> velocityTestFiles}}
-        {{/if}}
-
-        {{#if mochaPresent}}
-        <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+          {{#if mochaPresent}}
+          <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
             <h3>Mocha iFrame</h3>
             {{> mochaweb}}
+          </div>
+          {{/if}}
         </div>
-        {{/if}}
-
       </div>
     </div>
-
   </div>
 
   <!-- The status widget is the display-toggle circle in the upper-right -->
@@ -148,9 +145,7 @@
         <strong>Failed:</strong> {{failureMessage}}
         <br>
         {{#if failureStackTrace}}
-          <pre class='stack-trace pre-scrollable'>
-            {{failureStackTrace}}
-          </pre>
+          <pre class='stack-trace pre-scrollable'>{{failureStackTrace}}</pre>
         {{else}}
           No stack trace available.
         {{/if}}

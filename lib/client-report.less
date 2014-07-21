@@ -1,21 +1,24 @@
 @bootstrap-less-path: "src/less/";
 
 
-// Apply bootstrap formatting only to the Velocity overlay. 
+// Apply bootstrap formatting only to the Velocity overlay.
 #velocityOverlay {
   @import "bootstrap/bootstrap.imports.less";
 
-  background: rgba(255, 255, 255, 1);
   color: black;
   position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  overflow-x: auto;
+  top: 0;
+  left: 0;
+  right: 0;
 
   font-family: 'helvetica neue', helvetica, sans-serif;
   //font-size: 10px;
   z-index: 2147483646;
+
+  .container {
+    height: 100vh;
+    background: rgba(255, 255, 255, 1);
+  }
 
   .velocity-main{
     height: 1000vh;
@@ -33,8 +36,8 @@
   }
 
   .content-pane{
-    height:100vh;
-    overflow-x: auto;
+    height: 100vh;
+    overflow-y: auto;
   }
 
   .result-label span.glyphicon{
