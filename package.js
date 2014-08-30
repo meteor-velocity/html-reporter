@@ -1,9 +1,18 @@
 Package.describe({
-  summary: "Reactive Velocity test reports in your app."
-})
+  summary: "Reactive Velocity test reports in your app.",
+  version: "0.1.5",
+  githubUrl: "https://github.com/rdickert/velocity-html-reporter.git"
+});
 
 Package.on_use(function(api) {
-  api.use(['velocity', 'templating','amplify', 'less'], "client");
+  if (api.versionsFrom) {
+    api.versionsFrom("METEOR@0.9.0");
+    api.use('xolvio:velocity@0.1.18', 'client');
+  } else {
+    api.use('velocity', 'client');
+  }
+
+  api.use(['templating','amplify', 'less'], "client");
   
   api.add_files('lib/reamplify.js', 'client');
 
