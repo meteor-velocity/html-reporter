@@ -1,7 +1,7 @@
 Package.describe({
   summary: "Reactive Velocity test reports in your app.",
   version: "0.1.5",
-  githubUrl: "https://github.com/rdickert/velocity-html-reporter.git"
+  git: "https://github.com/rdickert/velocity-html-reporter.git"
 });
 
 Package.on_use(function(api) {
