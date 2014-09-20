@@ -1,7 +1,7 @@
 Package.describe({
   name: "velocity:html-reporter",
   summary: "Reactive Velocity test reports in your app.",
-  version: "0.2.1",
+  version: "0.2.2",
   git: "https://github.com/rdickert/velocity-html-reporter.git"
 });
 
@@ -14,7 +14,7 @@ Package.on_use(function(api) {
   }
 
   api.use(['templating','amplify', 'less'], "client");
-  
+
   api.add_files('lib/reamplify.js', 'client');
 
   api.add_files('lib/client-report.html', 'client');
