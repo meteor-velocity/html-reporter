@@ -14,10 +14,11 @@ Package.on_use(function(api) {
     api.use('velocity', 'client');
   }
 
-  api.use(['templating','amplify', 'less'], "client");
+  api.use(['underscore', 'templating','amplify', 'less'], 'client');
 
   api.add_files('lib/reamplify.js', 'client');
 
+  api.add_files('lib/velocity.js', 'client');
   api.add_files('lib/client-report.html', 'client');
   api.add_files('lib/client-report.js', 'client');
   api.add_files('lib/client-report.less', 'client');
