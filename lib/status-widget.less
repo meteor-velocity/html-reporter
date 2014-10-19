@@ -1,37 +1,38 @@
 #velocity-status-widget {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
+    top: 16px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border:solid 2px rgba(255, 255, 255, 0.9);
     z-index: 2147483647;
     cursor: pointer;
 
     &.pending, &.undefined {
-        background: #CCC;
+        background: #4990E2;
         // border:solid 1px;
     }
 
     &.passed, &.completed {
-        background: rgba(0, 192, 0, .5);
+        background: rgba(0, 192, 0, .8);
     }
 
     &.failed {
-        background: rgba(255, 0, 0, .5);
+        background: rgba(208, 59, 59, .8);
     }
 }
 
 #velocity-status-widget.failed:after {
-    content: " ";
+    content: "";
     position: absolute;
     z-index: 2147483648;
-    top: -25px;
-    left: -25px;
+    top: -27px;
+    left: -27px;
     width: 50px;
     height: 50px;
     border-radius: 60px;
-    border: 10px solid rgba(255, 0, 0, .5);
+    border: 10px solid rgba(208,59,59, 1);
     opacity: 0;
     animation: pulse 5s ease-out;
     -webkit-animation: pulse 5s ease-out;

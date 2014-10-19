@@ -14,7 +14,6 @@
           {{> velocityControlPanel}}
         </div>
         <div class="col-md-9 content-pane">
-          <h2>Results</h2>
           {{#each frameworks}}
             {{> velocityReports}}
           {{/each}}
@@ -48,7 +47,7 @@
 </template>
 
 <template name="velocityControlPanel">
-  <h1>Velocity</h1>
+  <h1 class="velocity-logo">Velocity</h1>
   <div class="overall-outcome">
     <h1> {{> resultLabel aggregateResult}} </h1>
     <div class="test-counts"> {{totalPassedTestCount}} of {{totalTestCount}} Passed</div>
@@ -56,7 +55,6 @@
 
   <div class="controls">
     <div class="framework-nav">
-      <h3>Summary</h3>
       <ul class="nav nav-pills nav-stacked">
         {{#each frameworks}}
           <li class={{maybeActive}}><a href="#">
@@ -90,27 +88,23 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">
-        {{> resultLabel result=frameworkStatus}}
         {{name}}
+        {{#if frameworkTotalTestCount}}
+          <span class='pull-right framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
+        {{/if}}
       </h3>
     </div>
     <div class="panel-body framework">
-      <div class="results">
-      {{#if frameworkTotalTestCount}}
-        <span class='framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
-      {{else}}
+      {{#unless frameworkTotalTestCount}}
         {{#if noFrameworkFiles}}
           <div class="addDemoTests">It appears that you don't have any tests for this framework. Would you like to add some tests?</div>
           <div id="add-demo-test-buttons">
             <button class="btn btn-primary copy-sample-tests">Add {{name}} sample tests</button>
           </div>
           {{else}}
-          <div>
-            Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading">
-          </div>
+          <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
         {{/if}}
-      {{/if}}
-      </div>
+      {{/unless}}
 
       {{#each suites}}
         {{#if suiteNotHidden}}
