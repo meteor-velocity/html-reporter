@@ -12,7 +12,8 @@
   right: 0;
 
   font-family: 'helvetica neue', helvetica, sans-serif;
-  //font-size: 10px;
+  font-size: 16px;
+  text-align:left;
   z-index: 2147483646;
 
   .container {
@@ -26,31 +27,41 @@
     position: static;
   }
 
-  div.row{
-    // position: static;
+  .velocity-logo {
+    color:transparent;
+    background: url("velocity_logo.svg") no-repeat center;
+    background-size: auto 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
-  .control-row{
-    // overflow-x: auto;
-    // height:100%;
+  h3 {
+    letter-spacing:1px;
   }
 
   .content-pane{
     height: 100vh;
     overflow-y: auto;
+    padding-top:22px;
   }
 
-  .result-label span.glyphicon{
-      vertical-align:  -13%;
-      padding-left: 0.25em;
+  .result-label {
+    display: inline-block;
+    width: 3em;
   }
 
   .control-pane {
+    padding-top:4px;
     margin-bottom: 20px;
-    // min-height: 50vh;
 
-    .controls{
-      margin-left: 1em;
+    .framework-nav {
+      margin: 20px auto 36px;
+    }
+
+    .result-label {
+      margin-right: 10px;
     }
 
     .overall-outcome{
@@ -65,6 +76,9 @@
     h1 {
       text-align: center;
     }
+    h3 {
+      font-size: 18px;
+    }
 
     .btn:focus:not(.active){
       background-color: white;
@@ -73,20 +87,9 @@
       background-color: #f5f5f5;
     }
 
-    .framework-nav{
-      float: left;
-      min-width: 50%;
-    }
-
     .options {
-      position: relative;
-      display: inline-block;
+      text-align:center;
     }
-  }
-
-
-  .framework-results{
-    font-size: 120%;
   }
 
   #add-demo-test-buttons{
@@ -94,7 +97,7 @@
   }
 
   // normalize display of test result tables between suites
-  .result-label{
+  .result-label-col{
     width: 3em;
   }
   .time-display{
@@ -113,17 +116,24 @@
 
   h4.suite{
     margin-top: 20px;
-    padding-top: 10px;
+    padding-top: 14px;
     border-top: solid 1px #ddd;
     font-size: 100%;
 
     &.failed{
       // border-top: solid 2px red;
     }
+
+    &:first-child{
+      margin-top:0;
+      border-top:0 none;
+      padding-top:0;
+    }
   }
 
   ul.reports{
     list-style: none;
+    padding-left:0;
 
     table {
       margin-bottom: 0;

@@ -31,6 +31,7 @@ Package.on_use(function(api) {
   api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.svg', 'client');
 
   api.add_files('lib/spinner.gif');
+  api.add_files('lib/velocity_logo.svg');
 
   // api.export('reamplify', ['client']);
 });
