@@ -3,7 +3,7 @@
 </body>
 
 <template name="velocity">
-  <div id="velocityOverlay" style="display: {{overlayIsVisible}};">
+  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}}">
     <h1 class="velocity-logo">Velocity</h1>
 
     {{#if resetting}}
