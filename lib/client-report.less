@@ -1,31 +1,23 @@
-@bootstrap-less-path: "src/less/";
+ #velocityOverlay {
 
+  @velocity-border: solid 3px rgba(74, 144, 226, 0.5);
+  @velocity-green: rgb(33, 149, 79);
 
-// Apply bootstrap formatting only to the Velocity overlay.
-#velocityOverlay {
-  @import "bootstrap/bootstrap.imports.less";
-
-  color: black;
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-
-  font-family: 'helvetica neue', helvetica, sans-serif;
+  max-width: 580px;
+  height:100vh;
+  padding:0 50px;
+  border-left: @velocity-border;
+  background: #fff;
+  color: #222;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
   font-size: 14px;
-  text-align:left;
+  text-align:center;
   z-index: 2147483646;
-
-  .container {
-    height: 100vh;
-    background: rgba(255, 255, 255, 1);
-  }
-
-  .velocity-main{
-    height: 1000vh;
-    overflow-x: auto;
-    position: static;
-  }
+  overflow-y: auto;
 
   .velocity-logo {
     color:transparent;
@@ -37,70 +29,77 @@
     user-select: none;
   }
 
+  .controls {
+    display:none;
+  }
+
+  h1, h2, h3 {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color:#222;
+  }
+
+  h1 {
+    font-size: 46px;
+    font-weight: 400;
+    letter-spacing:1.5px;
+  }
+
   h3 {
     letter-spacing:1px;
   }
 
-  .content-pane{
-    height: 100vh;
-    overflow-y: auto;
-    padding-top:22px;
-  }
+  .velocity-report{
+    min-height:105px;
 
-  .result-label span.glyphicon{
-      vertical-align:  -13%;
-      padding-left: 0.25em;
-  }
+    .velocity-report-header {
+      border-bottom: @velocity-border;
+      min-height: 30px;
 
-  .control-pane {
-    padding-top:4px;
-    margin-bottom: 20px;
-
-    .framework-nav {
-      margin: 20px auto 36px;
-    }
-
-    .overall-outcome{
-      height: 6em;
-      text-align: center;
-
-      .test-counts{
-        margin-top: 20px;
+      .velocity-report-name{
+        background:#fff;
+        color: #AAA;
+        font-family: "HelveticaNeue-UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight:400;
+        font-size: 22px;
+        font-weight:100;
+        letter-spacing:10px;
+        text-transform:capitalize;
+        position:relative;
+        top: 16px;
+        padding: 0 4px 0 10px;
       }
     }
+  }
 
-    h1 {
-      text-align: center;
-    }
-    h3 {
-      font-size: 18px;
-    }
+  .velocity-suite-header {
 
-    .btn:focus:not(.active){
-      background-color: white;
-    }
-    .btn:focus:hover:not(.active){
-      background-color: #f5f5f5;
-    }
-
-    .options {
-      text-align:center;
+    &.passed {
+      color: @velocity-green;
     }
   }
 
-  #add-demo-test-buttons{
-    margin-top: 20px;
+  .velocity-result-table {
+    width:100%;
+    text-align:left;
+
+    .velocity-test {
+      letter-spacing:1px;
+
+      td{
+        padding: 10px 0;
+      }
+    }
   }
 
   // normalize display of test result tables between suites
   .result-label{
     width: 3em;
   }
+
   .time-display{
     width: 4.5em;
     text-align: right;
   }
-
 
   // make stack trace horizontally scrollable
   pre.stack-trace{
@@ -175,7 +174,7 @@
   height:100%;
   top: 0;
   left: 0;
-    background-color: RGBA(180,180,180,.8);
+  background-color: rgba(180,180,180,.8);
 
   .panel {
     width: 70%;

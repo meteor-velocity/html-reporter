@@ -4,39 +4,34 @@
 
 <template name="velocity">
   <div id="velocityOverlay" style="display: {{overlayIsVisible}};">
-    <div class="container">
-      {{#if resetting}}
-        {{> velocityResetNotification}}
-      {{/if}}
+    <h1 class="velocity-logo">Velocity</h1>
 
-      <div class="row control-row">
-        <div class="col-md-3 control-pane">
-          {{> velocityControlPanel}}
-        </div>
-        <div class="col-md-9 content-pane">
-          {{#each frameworks}}
-            {{> velocityReports}}
-          {{/each}}
+    {{#if resetting}}
+      {{> velocityResetNotification}}
+    {{/if}}
 
-          {{#if active 'showLogs'}}
-            <h3>Logs</h3>
-            {{> velocityLogs}}
-          {{/if}}
+    {{> velocityControlPanel}}
 
-          {{#if active 'showFiles'}}
-            <h3>Test Files</h3>
-            {{> velocityTestFiles}}
-          {{/if}}
+    {{#each frameworks}}
+      {{> velocityReports}}
+    {{/each}}
 
-          {{#if mochaPresent}}
-          <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
-            <h3>Mocha iFrame</h3>
-            {{> mochaweb}}
-          </div>
-          {{/if}}
-        </div>
-      </div>
+    {{#if active 'showLogs'}}
+      <h3>Logs</h3>
+      {{> velocityLogs}}
+    {{/if}}
+
+    {{#if active 'showFiles'}}
+      <h3>Test Files</h3>
+      {{> velocityTestFiles}}
+    {{/if}}
+
+    {{#if mochaPresent}}
+    <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+      <h3>Mocha iFrame</h3>
+      {{> mochaweb}}
     </div>
+    {{/if}}
   </div>
 
   <!-- The status widget is the display-toggle circle in the upper-right -->
@@ -47,26 +42,9 @@
 </template>
 
 <template name="velocityControlPanel">
-  <h1 class="velocity-logo">Velocity</h1>
-  <div class="overall-outcome">
-    <h1> {{> resultLabel aggregateResult}} </h1>
-    <div class="test-counts"> {{totalPassedTestCount}} of {{totalTestCount}} Passed</div>
-  </div>
+  <h1>{{totalPassedTestCount}} tests passed</h1>
 
   <div class="controls">
-    <div class="framework-nav">
-      <ul class="nav nav-pills nav-stacked">
-        {{#each frameworks}}
-          <li class={{maybeActive}}><a href="#">
-            {{> resultLabel frameworkStatus}}
-            {{name}}
-            {{#if frameworkFailedCount}}
-              <span class="badge">{{frameworkFailedCount}}</span>
-            {{/if}}
-          </a></li>
-        {{/each}}
-      </ul>
-    </div>
     <div class="options">
       <h3>Options</h3>
       <div class="btn-group-vertical">
@@ -85,16 +63,14 @@
 </template>
 
 <template name="velocityReports">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        {{name}}
-        {{#if frameworkTotalTestCount}}
-          <span class='pull-right framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
-        {{/if}}
-      </h3>
-    </div>
-    <div class="panel-body framework">
+  <section class="velocity-report">
+    <h2 class="velocity-report-header">
+      <span class="velocity-report-name">{{name}}</span>
+<!--     {{#if frameworkTotalTestCount}}
+  <span class='pull-right framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
+{{/if}} -->
+    </h2>
+    <div class="framework">
       {{#unless frameworkTotalTestCount}}
         {{#if noFrameworkFiles}}
           <div class="addDemoTests">It appears that you don't have any tests for this framework. Would you like to add some tests?</div>
@@ -108,47 +84,40 @@
 
       {{#each suites}}
         {{#if suiteNotHidden}}
-          <h4 class="suite {{suiteStatus}}">
+          <h3 class="velocity-suite-header {{suiteStatus}}">
             {{suite}}
-          </h4>
-          <ul class="reports">
+          </h3>
+          <table class="velocity-result-table">
+            <tbody>
             {{#each reports}}
               {{> velocityTestReport}}
             {{/each}}
-          </ul>
-        {{/if}}
+            </tbody>
+          </table>
+          {{/if}}
       {{/each}}
     </div>
-  </div>
+  </section>
 </template>
 
 <template name="velocityTestReport">
   {{#if reportNotHidden}}
-  <li>
-    <div class="main-result">
-    <table class="table table-condensed">
-      <tbody>
-        <tr>
-          <td class="result-label">{{> resultLabel }}</td>
-          <td class="test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
-          <td class="time-display">{{time}} ms</td>
-        </tr>
-      </tbody>
-    </table>
-
-    </div>
+    <tr class="velocity-test">
+      <td class="velocity-test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
+      <td class="velocity-test-time">{{time}} ms</td>
+    </tr>
     {{#if failed}}
-      <div class="failed-test-info">
-        <strong>Failed:</strong> {{failureMessage}}
-        <br>
+    <tr>
+      <td colspan="2">{{failureMessage}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
         {{#if failureStackTrace}}
           <pre class='stack-trace pre-scrollable'>{{failureStackTrace}}</pre>
-        {{else}}
-          No stack trace available.
         {{/if}}
-      </div>
+      </td>
+    </tr>
     {{/if}}
-  </li>
   {{/if}}
 </template>
 
