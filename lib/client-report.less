@@ -1,7 +1,18 @@
  #velocityOverlay {
 
-  @velocity-border: solid 3px rgba(74, 144, 226, 0.5);
-  @velocity-green: rgb(33, 149, 79);
+   @velocity-blue: rgb(138,188,239);
+   @velocity-blue-alpha: rgba(74, 144, 226, 0.5);
+   @velocity-blue-dark: rgb(74, 144, 226);
+   @velocity-green: rgb(33, 149, 79);
+   @velocity-border: solid 3px @velocity-blue-alpha;
+   @velocity-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   @velocity-font-light: "HelveticaNeue-UltraLight", "Helvetica Neue Ultra Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+   // Kick it old school.
+   box-sizing:content-box;
+   &* {
+     box-sizing:content-box;
+   }
 
   position: fixed;
   top: 0;
@@ -12,7 +23,7 @@
   border-left: @velocity-border;
   background: #fff;
   color: #222;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: @velocity-font;
   font-weight: 300;
   font-size: 14px;
   text-align:center;
@@ -39,7 +50,7 @@
   }
 
   h1, h2, h3 {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: @velocity-font;
     color:#222;
   }
 
@@ -50,33 +61,36 @@
   }
 
   h3 {
+    font-weight:600;
     letter-spacing:1px;
   }
 
-  .velocity-report{
+  .velocity-report {
     min-height:105px;
 
     .velocity-report-header {
       border-bottom: @velocity-border;
       min-height: 30px;
+      margin:10px 0 40px;
 
       .velocity-report-name{
         background:#fff;
         color: #AAA;
-        font-family: "HelveticaNeue-UltraLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-family: @velocity-font-light;
         font-weight:400;
-        font-size: 22px;
+        font-size: 20px;
         font-weight:100;
-        letter-spacing:10px;
-        text-transform:capitalize;
+        letter-spacing:8px;
         position:relative;
         top: 16px;
         padding: 0 4px 0 10px;
       }
     }
-  }
+  } // end .velocity-report
 
   .velocity-suite-header {
+    margin:20px 0 5px;
+    text-align:left;
 
     &.passed {
       color: @velocity-green;
@@ -85,26 +99,41 @@
 
   .velocity-result-table {
     width:100%;
-    text-align:left;
 
-    .velocity-test {
+    .velocity-test-name,
+    .velocity-test-time {
+      text-align:left;
       letter-spacing:1px;
-
-      td{
-        padding: 10px 0;
-      }
+      padding: 5px 0;
+    }
+    .velocity-test-time {
+      width: 50px;
     }
   }
 
-  // normalize display of test result tables between suites
-  .result-label{
-    width: 3em;
+  .velocity-notice-inline {
+    background: rgb(240,240,240);
+    border-radius:3px;
+    padding: 20px;
   }
 
-  .time-display{
-    width: 4.5em;
-    text-align: right;
+  .btn-velocity {
+    background: @velocity-blue;
+    color: rgb(255,255,255);
+    border:0 none;
+    /* border: @velocity-border; */
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 14px;
+    font-size:14px;
+    font-family:@velocity-font;
+
+    &:hover {
+      background: darken(@velocity-blue, 10%);
+    }
   }
+
 
   // make stack trace horizontally scrollable
   pre.stack-trace{

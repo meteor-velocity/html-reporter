@@ -73,9 +73,9 @@
     <div class="framework">
       {{#unless frameworkTotalTestCount}}
         {{#if noFrameworkFiles}}
-          <div class="addDemoTests">It appears that you don't have any tests for this framework. Would you like to add some tests?</div>
-          <div id="add-demo-test-buttons">
-            <button class="btn btn-primary copy-sample-tests">Add {{name}} sample tests</button>
+          <div class="velocity-notice-inline">
+            <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
+            <button class="btn-velocity">Add {{name}} sample tests</button>
           </div>
           {{else}}
           <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
