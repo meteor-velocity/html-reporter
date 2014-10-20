@@ -42,20 +42,26 @@
 </template>
 
 <template name="velocityControlPanel">
-  <h1>{{totalPassedTestCount}} tests passed</h1>
+  <h1>
+    {{#if anyFailed}}
+    {{totalFailedTestCount}} tests failed
+    {{else}}
+    {{totalPassedTestCount}} tests passed
+    {{/if}}
+  </h1>
 
   <div class="controls">
     <div class="options">
       <h3>Options</h3>
       <div class="btn-group-vertical">
-        <button id="showSuccessful" class="btn  btn-default control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
-        <button id="showLogs" class="btn btn-default control-toggle {{showActive "showLogs"}}">Show logs</button>
-        <button id="showFiles" class="btn btn-default control-toggle {{showActive "showFiles"}}">Show files</button>
+        <button id="showSuccessful" class="btn-velocity control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
+        <button id="showLogs" class="btn-velocity control-toggle {{showActive "showLogs"}}">Show logs</button>
+        <button id="showFiles" class="btn-velocity control-toggle {{showActive "showFiles"}}">Show files</button>
         {{#if mochaPresent}}
-        <button id="showMochaIframe" class="btn btn-default control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
+        <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
         {{/if}}
         {{#if nightwatchPresent}}
-        <button id="runNightwatchTests" class="btn btn-default">Run nightwatch tests</button>
+        <button id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
         {{/if}}
       </div>
     </div>
@@ -70,50 +76,50 @@
   <span class='pull-right framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
 {{/if}} -->
     </h2>
-    <div class="framework">
-      {{#unless frameworkTotalTestCount}}
-        {{#if noFrameworkFiles}}
-          <div class="velocity-notice-inline">
-            <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
-            <button class="btn-velocity">Add {{name}} sample tests</button>
-          </div>
-          {{else}}
-          <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
-        {{/if}}
-      {{/unless}}
+    {{#unless frameworkTotalTestCount}}
+      {{#if noFrameworkFiles}}
+        <div class="velocity-notice-inline">
+          <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
+          <button class="btn-velocity">Add {{name}} sample tests</button>
+        </div>
+        {{else}}
+        <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
+      {{/if}}
+    {{/unless}}
 
-      {{#each suites}}
-        {{#if suiteNotHidden}}
-          <h3 class="velocity-suite-header {{suiteStatus}}">
-            {{suite}}
-          </h3>
-          <table class="velocity-result-table">
-            <tbody>
-            {{#each reports}}
-              {{> velocityTestReport}}
-            {{/each}}
-            </tbody>
-          </table>
-          {{/if}}
-      {{/each}}
-    </div>
+    {{#each suites}}
+      {{#if suiteNotHidden}}
+      <div class="velocity-suite {{suiteStatus}}">
+        <h3 class="velocity-suite-header {{suiteStatus}}">
+          {{suite}}
+        </h3>
+        <table class="velocity-result-table">
+          <tbody>
+          {{#each reports}}
+            {{> velocityTestReport}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+        {{/if}}
+    {{/each}}
   </section>
 </template>
 
 <template name="velocityTestReport">
   {{#if reportNotHidden}}
-    <tr class="velocity-test">
+    <tr class="velocity-test {{#if failed}}failed{{else}}passed{{/if}}">
       <td class="velocity-test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
-      <td class="velocity-test-time">{{time}} ms</td>
+      <td class="velocity-test-time">{{#if failed}}Fail{{else}}{{time}} ms{{/if}}</td>
     </tr>
     {{#if failed}}
     <tr>
-      <td colspan="2">{{failureMessage}}</td>
+      <td class="velocity-fail-msg" colspan="2">{{failureMessage}}</td>
     </tr>
     <tr>
       <td colspan="2">
         {{#if failureStackTrace}}
-          <pre class='stack-trace pre-scrollable'>{{failureStackTrace}}</pre>
+          <pre class='velocity-stack-trace'>{{failureStackTrace}}</pre>
         {{/if}}
       </td>
     </tr>

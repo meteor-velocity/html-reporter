@@ -1,25 +1,26 @@
- #velocityOverlay {
+#velocityOverlay {
+  @velocity-blue: rgb(138,188,239);
+  @velocity-blue-alpha: rgba(74, 144, 226, 0.5);
+  @velocity-blue-dark: rgb(74, 144, 226);
+  @velocity-green: rgb(33, 149, 79);
+  @velocity-red: rgb(226, 86, 78);
+  @velocity-border: solid 3px @velocity-blue-alpha;
+  @velocity-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  @velocity-font-light: "HelveticaNeue-UltraLight", "Helvetica Neue Ultra Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  @velocity-font-mono: Menlo, "Courier New", Courier, monospace;
 
-   @velocity-blue: rgb(138,188,239);
-   @velocity-blue-alpha: rgba(74, 144, 226, 0.5);
-   @velocity-blue-dark: rgb(74, 144, 226);
-   @velocity-green: rgb(33, 149, 79);
-   @velocity-border: solid 3px @velocity-blue-alpha;
-   @velocity-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   @velocity-font-light: "HelveticaNeue-UltraLight", "Helvetica Neue Ultra Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-   // Kick it old school.
+  // Kick it old school.
+  box-sizing:content-box;
+  &* {
    box-sizing:content-box;
-   &* {
-     box-sizing:content-box;
-   }
+  }
 
   position: fixed;
   top: 0;
   right: -780px;
   max-width: 580px;
   height:100vh;
-  padding:0 50px;
+  padding:0 50px 50px;
   border-left: @velocity-border;
   background: #fff;
   color: #222;
@@ -46,7 +47,7 @@
   }
 
   .controls {
-    display:none;
+//    display:none;
   }
 
   h1, h2, h3 {
@@ -91,29 +92,65 @@
   .velocity-suite-header {
     margin:20px 0 5px;
     text-align:left;
+    position:relative;
 
     &.passed {
       color: @velocity-green;
     }
+    &.failed {
+      color: @velocity-red;
+    }
   }
 
+  .table,
   .velocity-result-table {
     width:100%;
+    text-align:left;
 
     .velocity-test-name,
     .velocity-test-time {
-      text-align:left;
       letter-spacing:1px;
       padding: 5px 0;
     }
     .velocity-test-time {
-      width: 50px;
+      text-align: right;
+      font-family: @velocity-font-mono;
     }
   }
 
-  .velocity-notice-inline {
-    background: rgb(240,240,240);
+  .velocity-test.failed .velocity-test-time{
+    color:@velocity-red;
+  }
+
+  .velocity-test.passed .velocity-test-time{
+    color:@velocity-green
+  }
+
+  .velocity-fail-msg,
+  .velocity-stack-trace {
+    font-family:@velocity-font-mono;
+    letter-spacing: 1px;
+  }
+
+   .velocity-fail-msg{
+     font-size:14px;
+     line-height:1.7;
+     text-align: center;
+     padding:8px 0;
+   }
+
+   .velocity-stack-trace{
+     font-size:10px;
+     max-width: 525px;
+     overflow-x: auto;
+     border-left:solid 3px rgb(34, 34, 34);
+     margin-top:8px;
+   }
+
+  .velocity-notice-inline,
+  .velocity-stack-trace {
     border-radius:3px;
+    background: rgb(240, 240, 240);
     padding: 20px;
   }
 
@@ -121,70 +158,15 @@
     background: @velocity-blue;
     color: rgb(255,255,255);
     border:0 none;
-    /* border: @velocity-border; */
     border-radius: 3px;
     font-weight: 500;
     letter-spacing: 1px;
-    padding: 10px 14px;
-    font-size:14px;
+    padding: 10px 10px;
+    font-size:12px;
     font-family:@velocity-font;
 
     &:hover {
       background: darken(@velocity-blue, 10%);
-    }
-  }
-
-
-  // make stack trace horizontally scrollable
-  pre.stack-trace{
-    margin-top: 5px;
-    overflow: auto;
-    word-wrap: normal;
-    white-space: pre;
-  }
-
-  h4.suite{
-    margin-top: 20px;
-    padding-top: 14px;
-    border-top: solid 1px #ddd;
-    font-size: 100%;
-
-    &.failed{
-      // border-top: solid 2px red;
-    }
-
-    &:first-child{
-      margin-top:0;
-      border-top:0 none;
-      padding-top:0;
-    }
-  }
-
-  ul.reports{
-    list-style: none;
-    padding-left:0;
-
-    table {
-      margin-bottom: 0;
-      font-size: 100%;
-    }
-
-    td{
-      border-top: none !important;
-      padding: 0 !important;
-    }
-
-    li{
-      margin-top: 10px;
-
-      &:first-child{
-        margin-top: 15px;
-      }
-    }
-    .main-result{
-    }
-    .failed-test-info{
-      margin-top: 10px;
     }
   }
 
