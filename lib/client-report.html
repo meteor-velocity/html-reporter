@@ -129,7 +129,7 @@
     <table class="table table-condensed">
       <tbody>
         <tr>
-          <td class="result-label">{{> resultLabel }}</td>
+          <td class="result-label-col">{{> resultLabel }}</td>
           <td class="test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
           <td class="time-display">{{time}} ms</td>
         </tr>
@@ -156,7 +156,6 @@
   <span class="label {{labelColor result}} result-label">
     <span class="{{glyphiconType result}}"></span>
   </span>
-  &nbsp;
 </template>
 
 <template name="velocityLogs">

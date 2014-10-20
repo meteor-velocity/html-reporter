@@ -12,7 +12,7 @@
   right: 0;
 
   font-family: 'helvetica neue', helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   text-align:left;
   z-index: 2147483646;
 
@@ -47,9 +47,9 @@
     padding-top:22px;
   }
 
-  .result-label span.glyphicon{
-      vertical-align:  -13%;
-      padding-left: 0.25em;
+  .result-label {
+    display: inline-block;
+    width: 3em;
   }
 
   .control-pane {
@@ -58,6 +58,10 @@
 
     .framework-nav {
       margin: 20px auto 36px;
+    }
+
+    .result-label {
+      margin-right: 10px;
     }
 
     .overall-outcome{
@@ -93,7 +97,7 @@
   }
 
   // normalize display of test result tables between suites
-  .result-label{
+  .result-label-col{
     width: 3em;
   }
   .time-display{
