@@ -3,7 +3,7 @@
 </body>
 
 <template name="velocity">
-  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}}">
+  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
     <h1 class="velocity-logo">Velocity</h1>
 
     {{#if resetting}}
@@ -42,6 +42,11 @@
 </template>
 
 <template name="velocityControlPanel">
+  <div class="velocity-summary">
+    <i class="velocity-icon-status "></i>
+    <i class="velocity-icon-total"></i>
+    <i class="velocity-icon-time"></i>
+  </div>
   <h1>
     {{#if anyFailed}}
     {{totalFailedTestCount}} tests failed
@@ -49,7 +54,6 @@
     {{totalPassedTestCount}} tests passed
     {{/if}}
   </h1>
-
   <div class="controls">
     <div class="options">
       <h3>Options</h3>

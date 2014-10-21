@@ -46,6 +46,45 @@
     user-select: none;
   }
 
+  .velocity-icon-status{
+    display:inline-block;
+    width: 100px;
+    height:100px;
+    background: white;
+    border: 20px solid @velocity-blue;
+    border-radius: 100%;
+    position: relative;
+    &:before {
+      content:'';
+      display: block;
+      position: absolute;
+      top:28px;
+      left:27px;
+      width:46px;
+      height:46px;
+      background: @velocity-blue-dark;
+      border-radius:100%;
+      font-style: normal;
+      font-size: 50px;
+      line-height: 0.9;
+      color:white;
+    }
+  }
+  &.failed .velocity-icon-status{
+    background: @velocity-red;
+    &:before {
+      content:'✖';
+      background: transparent;
+    }
+  }
+  &.passed .velocity-icon-status{
+    background: @velocity-green;
+    &:before {
+      content:'✔';
+      background: transparent;
+    }
+  }
+
   .controls {
 //    display:none;
   }
