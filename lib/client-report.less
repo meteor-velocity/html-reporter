@@ -89,16 +89,39 @@
     }
   } // end .velocity-report
 
+  .velocity-suite{
+    border-bottom: solid 1px #efefef;
+    padding-bottom: 15px;
+    &:last-child{
+      border-bottom: 0 none;
+      padding-bottom: 0;
+    }
+  }
+
   .velocity-suite-header {
     margin:20px 0 5px;
     text-align:left;
-    position:relative;
 
     &.passed {
       color: @velocity-green;
     }
     &.failed {
       color: @velocity-red;
+    }
+  }
+
+  .velocity-report-header + .velocity-suite.passed {
+    position:relative;
+    &:before {
+      content:'';
+      display: block;
+      position:absolute;
+      top: -20px;
+      right:7px;
+      width: 34px;
+      height:34px;
+      background: transparent url("icon-time.png") no-repeat center;
+      background-size: 100%;
     }
   }
 
@@ -181,7 +204,6 @@
     left: 0 !important;
   }
 }
-
 
 #velocityResetNotification{
   position: fixed;
