@@ -44,15 +44,25 @@
 <template name="velocityControlPanel">
   <div class="velocity-summary">
     <i class="velocity-icon-status "></i>
-    <i class="velocity-icon-total"></i>
-    <i class="velocity-icon-time"></i>
+    <i class="velocity-icon-total">
+      {{#if anyFailed}}
+        {{totalFailedTestCount}}
+        <small>Fail</small>
+      {{else}}
+        {{totalPassedTestCount}}
+        <small>Pass</small>
+      {{/if}}</i>
+    <i class="velocity-icon-time">
+      <span>{{totalTime}}</span>
+    </i>
   </div>
   <h1>
     {{#if anyFailed}}
-    {{totalFailedTestCount}} tests failed
+    {{totalFailedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} failed
     {{else}}
-    {{totalPassedTestCount}} tests passed
+    {{totalPassedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} passed in {{totalTime}}
     {{/if}}
+
   </h1>
   <div class="controls">
     <div class="options">

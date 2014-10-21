@@ -20,7 +20,7 @@
   right: -780px;
   max-width: 580px;
   height:100vh;
-  padding:0 50px 50px;
+  padding:0 50px 100px;
   border-left: @velocity-border;
   background: #fff;
   color: #222;
@@ -54,6 +54,7 @@
     border: 20px solid @velocity-blue;
     border-radius: 100%;
     position: relative;
+    vertical-align: -28px;
     &:before {
       content:'';
       display: block;
@@ -83,6 +84,50 @@
       content:'✔';
       background: transparent;
     }
+  }
+
+  .velocity-icon-total {
+    display:inline-block;
+    width: 100px;
+    background: white;
+    border: 8px solid @velocity-blue;
+    border-radius: 10px;
+    padding:2px 0 8px;
+    font-style:normal;
+    font-family: @velocity-font;
+    font-size:68px;
+    line-height: 1;
+    margin:0 60px;
+
+    small {
+      font-family: @velocity-font-light;
+      text-transform: uppercase;
+      font-size:20px;
+      margin-top:6px;
+      display: block;
+      letter-spacing: 4px;
+    }
+  }
+  &.failed .velocity-icon-total {
+    border-color: @velocity-red;
+  }
+  &.passed .velocity-icon-total {
+    border-color: @velocity-green;
+  }
+
+  .velocity-icon-time {
+    display:inline-block;
+    width: 100px;
+    height: 100px;
+    background: transparent url("icon-time.png") no-repeat center;
+    background-size: 100%;
+    border:solid 10px #4A4A4A;
+    border-radius:100%;
+    vertical-align: 30px;
+    font-style: normal;
+    font-family:@velocity-font-light;
+    font-size:30px;
+    line-height:100px;
   }
 
   .controls {
