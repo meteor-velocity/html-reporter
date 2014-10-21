@@ -24,12 +24,6 @@ Package.on_use(function(api) {
   api.add_files('lib/client-report.less', 'client');
   api.add_files('lib/status-widget.less', 'client');
 
-  //bootstrap glyphicons
-  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.eot', 'client');
-  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.ttf', 'client');
-  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.woff', 'client');
-  api.add_files('lib/bootstrap/src/fonts/glyphicons-halflings-regular.svg', 'client');
-
   api.add_files('lib/spinner.gif');
   api.add_files('lib/velocity_logo.svg');
   api.add_files('lib/icon-time.png');

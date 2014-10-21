@@ -35,15 +35,14 @@
   </div>
 
   <!-- The status widget is the display-toggle circle in the upper-right -->
-  <a id="velocity-status-widget"
-     class="{{statusWidgetClass}} display-toggle"
-     data-target="velocityOverlay"></a>
-
+  <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle" data-target="velocityOverlay">
+    <i class="velocity-icon-status"></i>
+  </div>
 </template>
 
 <template name="velocityControlPanel">
   <div class="velocity-summary">
-    <i class="velocity-icon-status "></i>
+    <i class="velocity-icon-status"></i>
     <i class="velocity-icon-total">
       {{#if anyFailed}}
         {{totalFailedTestCount}}
@@ -85,16 +84,14 @@
 <template name="velocityReports">
   <section class="velocity-report">
     <h2 class="velocity-report-header">
+
       <span class="velocity-report-name">{{name}}</span>
-<!--     {{#if frameworkTotalTestCount}}
-  <span class='pull-right framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
-{{/if}} -->
     </h2>
     {{#unless frameworkTotalTestCount}}
       {{#if noFrameworkFiles}}
         <div class="velocity-notice-inline">
           <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
-          <button class="btn-velocity">Add {{name}} sample tests</button>
+          <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
         </div>
         {{else}}
         <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
