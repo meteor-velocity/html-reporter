@@ -4,39 +4,7 @@
 
 <template name="velocity">
   <div id="velocityOverlay" style="display: {{overlayIsVisible}};">
-    <div class="container">
-      {{#if resetting}}
-        {{> velocityResetNotification}}
-      {{/if}}
-
-      <div class="row control-row">
-        <div class="col-md-3 control-pane">
-          {{> velocityControlPanel}}
-        </div>
-        <div class="col-md-9 content-pane">
-          {{#each frameworks}}
-            {{> velocityReports}}
-          {{/each}}
-
-          {{#if active 'showLogs'}}
-            <h3>Logs</h3>
-            {{> velocityLogs}}
-          {{/if}}
-
-          {{#if active 'showFiles'}}
-            <h3>Test Files</h3>
-            {{> velocityTestFiles}}
-          {{/if}}
-
-          {{#if mochaPresent}}
-          <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
-            <h3>Mocha iFrame</h3>
-            {{> mochaweb}}
-          </div>
-          {{/if}}
-        </div>
-      </div>
-    </div>
+    <iframe></iframe>
   </div>
 
   <!-- The status widget is the display-toggle circle in the upper-right -->
@@ -44,6 +12,42 @@
      class="{{statusWidgetClass}} display-toggle"
      data-target="velocityOverlay"></a>
 
+</template>
+
+<template name="velocityInsideOverlay">
+  <div class="container">
+    {{#if resetting}}
+      {{> velocityResetNotification}}
+    {{/if}}
+
+    <div class="row control-row">
+      <div class="col-md-3 control-pane">
+        {{> velocityControlPanel}}
+      </div>
+      <div class="col-md-9 content-pane">
+        {{#each frameworks}}
+          {{> velocityReports}}
+        {{/each}}
+
+        {{#if active 'showLogs'}}
+          <h3>Logs</h3>
+          {{> velocityLogs}}
+        {{/if}}
+
+        {{#if active 'showFiles'}}
+          <h3>Test Files</h3>
+          {{> velocityTestFiles}}
+        {{/if}}
+
+        {{#if mochaPresent}}
+        <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+          <h3>Mocha iFrame</h3>
+          {{> mochaweb}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="velocityControlPanel">
