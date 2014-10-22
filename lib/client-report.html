@@ -4,8 +4,9 @@
 
 <template name="velocity">
   <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
-    <h1 class="velocity-logo">Velocity</h1>
+    <a class="velocity-btn-close display-toggle" data-target="velocityOverlay"></a>
 
+    <h1 class="velocity-logo">Velocity</h1>
     {{#if resetting}}
       {{> velocityResetNotification}}
     {{/if}}
@@ -34,8 +35,8 @@
     {{/if}}
   </div>
 
-  <!-- The status widget is the display-toggle circle in the upper-right -->
-  <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle" data-target="velocityOverlay">
+  <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle"
+       data-target="velocityOverlay" title="Show test results">
     <i class="velocity-icon-status"></i>
   </div>
 </template>

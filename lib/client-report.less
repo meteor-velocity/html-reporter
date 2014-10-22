@@ -1,13 +1,7 @@
 #velocityOverlay {
-  @velocity-blue: rgb(138,188,239);
-  @velocity-blue-alpha: rgba(74, 144, 226, 0.5);
-  @velocity-blue-dark: rgb(74, 144, 226);
-  @velocity-green: rgb(33, 149, 79);
-  @velocity-red: rgb(226, 86, 78);
-  @velocity-border: solid 3px @velocity-blue-alpha;
-  @velocity-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  @velocity-font-light: "HelveticaNeue-UltraLight", "Helvetica Neue Ultra Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  @velocity-font-mono: Menlo, "Courier New", Courier, monospace;
+  @import "velocity.less";
+
+  z-index: 9000;
 
   // Kick it old school.
   box-sizing:content-box;
@@ -33,6 +27,31 @@
 
   &.visible {
     right: 0;
+  }
+
+  .velocity-btn-close {
+    display: inline-block;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top:0px;
+    right:0px;
+    color: @velocity-grey;
+    opacity: 0.2;
+    font-size:40px;
+    transition: opacity 0.25s ease-in-out;
+    &:before{
+      content:'✖';
+    }
+    &:after {
+      display: inline-block;
+      vertical-align: middle;
+      width:0;
+      height:0;
+    }
+    &:hover {
+      opacity:0.6;
+    }
   }
 
   .velocity-logo {
@@ -120,7 +139,7 @@
     height: 100px;
     background: transparent url("icon-time.png") no-repeat center;
     background-size: 100%;
-    border:solid 10px #4A4A4A;
+    border:solid 10px @velocity-grey;
     border-radius:100%;
     vertical-align: 30px;
     font-style: normal;
