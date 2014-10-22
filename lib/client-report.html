@@ -62,7 +62,6 @@
     {{else}}
     {{totalPassedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} passed in {{totalTime}}
     {{/if}}
-
   </h1>
   <div class="controls">
     <div class="options">
@@ -85,7 +84,6 @@
 <template name="velocityReports">
   <section class="velocity-report">
     <h2 class="velocity-report-header">
-
       <span class="velocity-report-name">{{name}}</span>
     </h2>
     {{#unless frameworkTotalTestCount}}
@@ -126,7 +124,9 @@
     </tr>
     {{#if failed}}
     <tr>
-      <td class="velocity-fail-msg" colspan="2">{{failureMessage}}</td>
+      <td class="velocity-fail-msg" colspan="2">
+        <i class="velocity-icon-status"></i> {{failureMessage}}
+      </td>
     </tr>
     <tr>
       <td colspan="2">

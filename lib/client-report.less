@@ -29,6 +29,22 @@
     right: 0;
   }
 
+  h1, h2, h3 {
+    font-family: @velocity-font;
+    color:#222;
+  }
+
+  h1 {
+    font-size: 46px;
+    font-weight: 400;
+    letter-spacing:1.5px;
+  }
+
+  h3 {
+    font-weight:600;
+    letter-spacing:1px;
+  }
+
   .velocity-btn-close {
     display: inline-block;
     width:50px;
@@ -72,21 +88,23 @@
     border: 20px solid @velocity-blue;
     border-radius: 100%;
     position: relative;
-    vertical-align: -28px;
+    font-size: 50px;
+    vertical-align: middle;
+    text-align: center;
+    color:white;
+
     &:before {
       content:'';
       display: block;
       position: absolute;
-      top:28px;
-      left:27px;
-      width:46px;
-      height:46px;
+      top: 25%;
+      left: 25%;
+      width: 50%;
+      height: 50%;
       background: @velocity-blue-dark;
       border-radius:100%;
       font-style: normal;
-      font-size: 50px;
-      line-height: 0.9;
-      color:white;
+      line-height: 1;
     }
   }
   &.failed .velocity-icon-status{
@@ -102,6 +120,9 @@
       content:'✔';
       background: transparent;
     }
+  }
+  .velocity-summary .velocity-icon-status{
+    vertical-align: -28px;
   }
 
   .velocity-icon-total {
@@ -146,26 +167,6 @@
     font-family:@velocity-font-light;
     font-size:30px;
     line-height:100px;
-  }
-
-  .controls {
-//    display:none;
-  }
-
-  h1, h2, h3 {
-    font-family: @velocity-font;
-    color:#222;
-  }
-
-  h1 {
-    font-size: 46px;
-    font-weight: 400;
-    letter-spacing:1.5px;
-  }
-
-  h3 {
-    font-weight:600;
-    letter-spacing:1px;
   }
 
   .velocity-report {
@@ -251,69 +252,74 @@
     color:@velocity-green
   }
 
-  .velocity-fail-msg,
-  .velocity-stack-trace {
-    font-family:@velocity-font-mono;
+  .velocity-fail-msg{
+    font-size:20px;
+    line-height:1.7;
+//    padding:8px 0;
     letter-spacing: 1px;
   }
 
-   .velocity-fail-msg{
-     font-size:14px;
-     line-height:1.7;
-     text-align: center;
-     padding:8px 0;
-   }
+  .velocity-fail-msg .velocity-icon-status {
+    width:20px;
+    height:20px;
+    border-width:0px;
+    font-size:10px;
+    color:transparent;
+    margin:0 8px 0 -36px;
+  }
 
-   .velocity-stack-trace{
-     font-size:10px;
-     max-width: 525px;
-     overflow-x: auto;
-     border-left:solid 3px rgb(34, 34, 34);
-     margin-top:8px;
-   }
+  .velocity-stack-trace {
+    font-family:@velocity-font-mono;
+    font-size: 11px;
+    letter-spacing: 1px;
+    max-width: 525px;
+    overflow-x: auto;
+    border-left: solid 3px rgb(34, 34, 34);
+    margin: 8px 0 12px -4px;
+  }
 
   .velocity-notice-inline,
   .velocity-stack-trace {
-    border-radius:3px;
+    border-radius: 3px;
     background: rgb(240, 240, 240);
     padding: 20px;
   }
 
   .btn-velocity {
     background: @velocity-blue;
-    color: rgb(255,255,255);
-    border:0 none;
+    color: rgb(255, 255, 255);
+    border: 0 none;
     border-radius: 3px;
     font-weight: 500;
     letter-spacing: 1px;
     padding: 10px 10px;
-    font-size:12px;
-    font-family:@velocity-font;
+    font-size: 12px;
+    font-family: @velocity-font;
 
     &:hover {
       background: darken(@velocity-blue, 10%);
     }
   }
 
-  .iframe{
+  .iframe {
     position: absolute !important;
     top: -9999px !important;
     left: -9999px !important;
   }
-  .iframe.visible{
+  .iframe.visible {
     position: relative !important;
     top: 0 !important;
     left: 0 !important;
   }
 }
 
-#velocityResetNotification{
+#velocityResetNotification {
   position: fixed;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(180,180,180,.8);
+  background-color: rgba(180, 180, 180, .8);
 
   .panel {
     width: 70%;
