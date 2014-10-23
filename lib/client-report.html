@@ -18,12 +18,16 @@
     {{/each}}
 
     {{#if active 'showLogs'}}
-      <h3>Logs</h3>
+    <h2 class="velocity-section-header">
+      <span class="velocity-section-name">Logs</span>
+    </h2>
       {{> velocityLogs}}
     {{/if}}
 
     {{#if active 'showFiles'}}
-      <h3>Test Files</h3>
+    <h2 class="velocity-section-header">
+      <span class="velocity-section-name">Test files</span>
+    </h2>
       {{> velocityTestFiles}}
     {{/if}}
 
@@ -83,8 +87,8 @@
 
 <template name="velocityReports">
   <section class="velocity-report {{frameworkStatus}}">
-    <h2 class="velocity-report-header">
-      <span class="velocity-report-name">{{name}}</span>
+    <h2 class="velocity-section-header">
+      <span class="velocity-section-name">{{name}}</span>
     </h2>
 
     {{#if isPassed frameworkStatus}}
@@ -152,21 +156,23 @@
 </template>
 
 <template name="velocityLogs">
-  <table id="velocityLogs" class="table">
-    <thead>
-      <tr>
-        <th>Timestamp</th>
-        <th>Type</th>
-        <th>Message</th>
-        <th>Framework</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each logs}}
-      {{> velocityLog}}
-      {{/each}}
-    </tbody>
-  </table>
+  <div class="velocity-table-box">
+    <table id="velocityLogs" class="velocity-table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Type</th>
+          <th>Message</th>
+          <th>Framework</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each logs}}
+        {{> velocityLog}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="velocityLog">
@@ -179,22 +185,23 @@
 </template>
 
 <template name="velocityTestFiles">
-  <table id="velocityTestFiles"
-         class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Relative Path</th>
-        <th>Target Framework</th>
-        <th>Last Modified</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each testFiles}}
-      {{> velocityTestFile}}
-      {{/each}}
-    </tbody>
-  </table>
+  <div class="velocity-table-box">
+    <table id="velocityTestFiles" class="velocity-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Relative Path</th>
+          <th>Target Framework</th>
+          <th>Last Modified</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each testFiles}}
+        {{> velocityTestFile}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="velocityTestFile">

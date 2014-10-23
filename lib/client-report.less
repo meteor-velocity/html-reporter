@@ -208,26 +208,26 @@
 
   .velocity-report {
     min-height:105px;
+  }
 
-    .velocity-report-header {
-      border-bottom: @velocity-border;
-      min-height: 30px;
-      margin:10px 0 40px;
+  .velocity-section-header {
+    border-bottom: @velocity-border;
+    min-height: 30px;
+    margin:10px 0 40px;
 
-      .velocity-report-name{
-        background:#fff;
-        color: #AAA;
-        font-family: @velocity-font-light;
-        font-weight:400;
-        font-size: 20px;
-        font-weight:100;
-        letter-spacing:8px;
-        position:relative;
-        top: 16px;
-        padding: 0 4px 0 10px;
-      }
+    .velocity-section-name{
+      background:#fff;
+      color: #AAA;
+      font-family: @velocity-font-light;
+      font-weight:400;
+      font-size: 20px;
+      font-weight:100;
+      letter-spacing:8px;
+      position:relative;
+      top: 16px;
+      padding: 0 4px 0 10px;
     }
-  } // end .velocity-report
+  }
 
   .velocity-suite{
     border-bottom: solid 1px #efefef;
@@ -256,7 +256,7 @@
     }
   }
 
-  .velocity-report-header + .velocity-suite.passed {
+  .velocity-section-header + .velocity-suite.passed {
     position:relative;
     &:before {
       content:'';
@@ -298,7 +298,6 @@
   .velocity-fail-msg{
     font-size:20px;
     line-height:1.7;
-//    padding:8px 0;
     letter-spacing: 1px;
   }
 
@@ -359,6 +358,28 @@
       margin-bottom: 50px;
       min-height: 500px;
       border:@velocity-border;
+    }
+  }
+
+  .velocity-table-box{
+    max-width: 100%;
+    overflow-x: auto;
+    margin:0 0 50px;
+  }
+
+  .velocity-table {
+    min-width: 100%;
+    background: rgb(240, 240, 240);
+    text-align: left;
+    border-collapse: collapse;
+    white-space: nowrap;
+    margin:0;
+    td, th {
+      border-bottom: solid 1px white;
+      padding:8px 10px;
+    }
+    th{
+      border-bottom: solid 2px rgb(180, 180, 180)
     }
   }
 }
