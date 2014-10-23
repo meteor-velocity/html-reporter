@@ -169,6 +169,42 @@
     line-height:100px;
   }
 
+  .velocity-icon-cog {
+    width:16px;
+    height: 16px;
+    display: inline-block;
+    background: url("velocity_cog.svg") no-repeat center;
+    background-size: auto 100%;
+  }
+
+  .velocity-options-toggle{
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    background: #efefef;
+    opacity: 0.4;
+    padding:5px 5px 4px;
+    margin:0;
+    line-height:1;
+    transition: opacity 0.25s ease-in-out;
+    &:hover {
+      opacity: 0.9;
+    }
+    &:focus {
+      outline:none;
+    }
+  }
+
+  .velocity-options {
+    margin:0 0 -36px;
+    opacity:0;
+    overflow: hidden;
+    transition: margin 0.3s linear, opacity 0.3s ease-in-out, max-height 0.3s linear;
+    &.visible {
+      margin:20px 0 10px;
+      opacity:1;
+    }
+  }
+  
   .velocity-report {
     min-height:105px;
 

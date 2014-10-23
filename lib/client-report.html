@@ -63,37 +63,37 @@
     {{totalPassedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} passed in {{totalTime}}
     {{/if}}
   </h1>
-  <div class="controls">
-    <div class="options">
-      <h3>Options</h3>
-      <div class="btn-group-vertical">
-        <button id="showSuccessful" class="btn-velocity control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
-        <button id="showLogs" class="btn-velocity control-toggle {{showActive "showLogs"}}">Show logs</button>
-        <button id="showFiles" class="btn-velocity control-toggle {{showActive "showFiles"}}">Show files</button>
-        {{#if mochaPresent}}
-        <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
-        {{/if}}
-        {{#if nightwatchPresent}}
-        <button id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
-        {{/if}}
-      </div>
-    </div>
+
+  <button class="velocity-options-toggle">
+    <i class="velocity-icon-cog"></i>
+  </button>
+
+  <div class="velocity-options">
+    <button id="showSuccessful" class="btn-velocity control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
+    <button id="showLogs" class="btn-velocity control-toggle {{showActive "showLogs"}}">Show logs</button>
+    <button id="showFiles" class="btn-velocity control-toggle {{showActive "showFiles"}}">Show files</button>
+    {{#if mochaPresent}}
+    <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
+    {{/if}}
+    {{#if nightwatchPresent}}
+    <button id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
+    {{/if}}
   </div>
 </template>
 
 <template name="velocityReports">
-  <section class="velocity-report">
+  <section class="velocity-report {{frameworkStatus}}">
     <h2 class="velocity-report-header">
       <span class="velocity-report-name">{{name}}</span>
     </h2>
     {{#unless frameworkTotalTestCount}}
       {{#if noFrameworkFiles}}
-        <div class="velocity-notice-inline">
-          <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
-          <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
-        </div>
-        {{else}}
-        <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
+      <div class="velocity-notice-inline">
+        <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
+        <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
+      </div>
+      {{else}}
+      <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>}
       {{/if}}
     {{/unless}}
 

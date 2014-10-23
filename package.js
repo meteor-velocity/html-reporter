@@ -26,6 +26,7 @@ Package.on_use(function(api) {
 
   api.add_files('lib/spinner.gif');
   api.add_files('lib/velocity_logo.svg');
+  api.add_files('lib/velocity_cog.svg');
   api.add_files('lib/icon-time.png');
 
   // api.export('reamplify', ['client']);
