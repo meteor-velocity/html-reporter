@@ -35,9 +35,9 @@
   }
 
   h1 {
-    font-size: 46px;
+    font-size: 40px;
     font-weight: 400;
-    letter-spacing:1.5px;
+    letter-spacing:1px;
   }
 
   h3 {
@@ -50,10 +50,10 @@
     width:50px;
     height:50px;
     position:absolute;
-    top:0px;
-    right:0px;
+    top:4px;
+    right:4px;
     color: @velocity-grey;
-    opacity: 0.2;
+    opacity: 0.1;
     font-size:40px;
     transition: opacity 0.25s ease-in-out;
     &:before{
@@ -72,6 +72,7 @@
 
   .velocity-logo {
     color:transparent;
+    margin-left:40px;
     background: url("velocity_logo.svg") no-repeat center;
     background-size: auto 100%;
     -webkit-user-select: none;
@@ -204,7 +205,7 @@
       opacity:1;
     }
   }
-  
+
   .velocity-report {
     min-height:105px;
 
@@ -235,6 +236,12 @@
       border-bottom: 0 none;
       padding-bottom: 0;
     }
+  }
+
+  .velocity-report .velocity-icon-status {
+    transform: scale(0.5);
+    margin: -40px 0;
+
   }
 
   .velocity-suite-header {
@@ -346,6 +353,13 @@
     position: relative !important;
     top: 0 !important;
     left: 0 !important;
+
+    iframe {
+      width:100%;
+      margin-bottom: 50px;
+      min-height: 500px;
+      border:@velocity-border;
+    }
   }
 }
 

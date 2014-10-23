@@ -86,6 +86,11 @@
     <h2 class="velocity-report-header">
       <span class="velocity-report-name">{{name}}</span>
     </h2>
+
+    {{#if isPassed frameworkStatus}}
+      <i class="velocity-icon-status"></i>
+    {{/if}}
+
     {{#unless frameworkTotalTestCount}}
       {{#if noFrameworkFiles}}
       <div class="velocity-notice-inline">
@@ -93,12 +98,12 @@
         <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
       </div>
       {{else}}
-      <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>}
+      <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
       {{/if}}
     {{/unless}}
 
     {{#each suites}}
-      {{#if suiteNotHidden}}
+    {{#if suiteNotHidden}}
       <div class="velocity-suite {{suiteStatus}}">
         <h3 class="velocity-suite-header {{suiteStatus}}">
           {{suite}}
