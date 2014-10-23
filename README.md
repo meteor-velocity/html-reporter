@@ -1,5 +1,6 @@
 velocity-html-reporter
 ======================
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meteor-velocity/html-reporter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 HTML reporter for Meteor's [Velocity testing framework](https://github.com/xolvio/velocity)
 
