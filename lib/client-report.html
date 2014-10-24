@@ -63,13 +63,13 @@
       <span>{{totalTime}}</span>
     </i>
   </div>
-  <h1>
+  <div class="velocity-summary-text">
   {{#if anyFailed}}
     {{totalFailedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} failed
   {{else}}
     {{totalPassedTestCount}} {{regularPlural totalPassedTestCount 'test' 's'}} passed in {{totalTime}}
   {{/if}}
-  </h1>
+  </div>
 </template>
 
 <template name="velocityControlPanel">

@@ -34,12 +34,6 @@
     color:#222;
   }
 
-  h1 {
-    font-size: 40px;
-    font-weight: 400;
-    letter-spacing:1px;
-  }
-
   h3 {
     font-weight:600;
     letter-spacing:1px;
@@ -81,7 +75,6 @@
     user-select: none;
   }
 
-
   .velocity-icon-status{
     display:inline-block;
     width: 100px;
@@ -90,6 +83,7 @@
     border: 20px solid @velocity-blue;
     border-radius: 100%;
     position: relative;
+    font: @velocity-font;
     font-size: 50px;
     vertical-align: middle;
     text-align: center;
@@ -174,8 +168,19 @@
     vertical-align: 30px;
     font-style: normal;
     font-family:@velocity-font-light;
+    font-weight:100;
     font-size:30px;
     line-height:100px;
+
+  }
+
+  .velocity-summary-text {
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing:1px;
+    font-family: @velocity-font;
+    color:#222;
+    line-height: 2;
   }
 
   .velocity-icon-cog {
