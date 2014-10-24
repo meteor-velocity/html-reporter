@@ -24,7 +24,6 @@ Package.on_use(function(api) {
   api.add_files('lib/client-report.less', 'client');
   api.add_files('lib/status-widget.less', 'client');
 
-  api.add_files('lib/spinner.gif');
   api.add_files('lib/velocity_logo.svg');
   api.add_files('lib/velocity_cog.svg');
   api.add_files('lib/icon-time.png');

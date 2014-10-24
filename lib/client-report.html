@@ -32,7 +32,7 @@
     {{/if}}
 
     {{#if mochaPresent}}
-    <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+    <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
       <h3>Mocha iFrame</h3>
       {{> mochaweb}}
     </div>
@@ -102,7 +102,10 @@
         <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
       </div>
       {{else}}
-      <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
+      <div class="velocity-loading">
+        <i class="velocity-icon-loading"></i>
+        <p>Loading</p>
+      </div>
       {{/if}}
     {{/unless}}
 

@@ -81,6 +81,7 @@
     user-select: none;
   }
 
+
   .velocity-icon-status{
     display:inline-block;
     width: 100px;
@@ -122,6 +123,13 @@
       background: transparent;
     }
   }
+  &.pending .velocity-icon-status{
+    &:before {
+      -webkit-animation: @velocity-anim-throb;
+      animation: @velocity-anim-throb;
+    }
+  }
+
   .velocity-summary .velocity-icon-status{
     vertical-align: -28px;
   }
@@ -207,7 +215,7 @@
   }
 
   .velocity-report {
-    min-height:105px;
+    min-height:150px;
   }
 
   .velocity-section-header {
@@ -241,7 +249,6 @@
   .velocity-report .velocity-icon-status {
     transform: scale(0.5);
     margin: -40px 0;
-
   }
 
   .velocity-suite-header {
@@ -271,8 +278,7 @@
       background-size: 100%;
     }
   }
-
-  .table,
+  
   .velocity-result-table {
     width:100%;
     text-align:left;
@@ -344,12 +350,12 @@
     }
   }
 
-  .iframe {
+  .velocity-iframe {
     position: absolute !important;
     top: -9999px !important;
     left: -9999px !important;
   }
-  .iframe.visible {
+  .velocity-iframe.visible {
     position: relative !important;
     top: 0 !important;
     left: 0 !important;
@@ -383,8 +389,20 @@
       border-bottom: solid 2px rgb(180, 180, 180)
     }
   }
+
+  .velocity-icon-loading{
+    display:block;
+    margin:0 auto;
+    width:20px;
+    height:20px;
+    background:#4990E2;
+    border-radius:100%;
+    -webkit-animation: @velocity-anim-throb;
+            animation: @velocity-anim-throb;
+  }
 }
 
+// TODO: tidy up.
 #velocityResetNotification {
   position: fixed;
   width: 100%;
