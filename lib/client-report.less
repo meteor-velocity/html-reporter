@@ -40,6 +40,8 @@
   }
 
   .velocity-btn-close {
+    border:0 none;
+    background: transparent;
     display: inline-block;
     width:50px;
     height:50px;
@@ -66,7 +68,8 @@
 
   .velocity-logo {
     color:transparent;
-    margin-left:30px;
+    margin:20px 0 20px 25px;
+    height:50px;
     background: url("velocity_logo.svg") no-repeat center;
     background-size: auto 100%;
     -webkit-user-select: none;
@@ -181,6 +184,7 @@
     font-family: @velocity-font;
     color:#222;
     line-height: 2;
+    margin:5px 0;
   }
 
   .velocity-icon-cog {
@@ -209,7 +213,7 @@
   }
 
   .velocity-options {
-    margin:0 0 -36px;
+    margin:0 0 -40px;
     opacity:0;
     overflow: hidden;
     transition: margin 0.3s linear, opacity 0.3s ease-in-out, max-height 0.3s linear;
@@ -238,7 +242,7 @@
       letter-spacing:8px;
       position:relative;
       top: 16px;
-      padding: 0 4px 0 10px;
+      padding: 0 2px 0 10px;
     }
   }
 
@@ -257,6 +261,9 @@
   }
 
   .velocity-suite-header {
+    font-family:@velocity-font;
+    font-weight:600;
+    letter-spacing:1px;
     margin:20px 0 5px;
     text-align:left;
 
@@ -309,7 +316,7 @@
 
   .velocity-fail-msg{
     font-size:20px;
-    line-height:1.7;
+    line-height:1.5;
     letter-spacing: 1px;
   }
 

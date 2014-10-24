@@ -4,9 +4,9 @@
 
 <template name="velocity">
   <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
-    <a class="velocity-btn-close display-toggle" data-target="velocityOverlay"></a>
+    <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
 
-    <h1 class="velocity-logo">Velocity</h1>
+    <div class="velocity-logo">Velocity</div>
     {{#if resetting}}
       {{> velocityResetNotification}}
     {{/if}}
@@ -20,22 +20,24 @@
     {{/each}}
 
     {{#if active 'showLogs'}}
-    <h2 class="velocity-section-header">
+    <div class="velocity-section-header">
       <span class="velocity-section-name">Logs</span>
-    </h2>
+    </div>
       {{> velocityLogs}}
     {{/if}}
 
     {{#if active 'showFiles'}}
-    <h2 class="velocity-section-header">
+    <div class="velocity-section-header">
       <span class="velocity-section-name">Test files</span>
-    </h2>
+    </div>
       {{> velocityTestFiles}}
     {{/if}}
 
     {{#if mochaPresent}}
     <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
-      <h3>Mocha iFrame</h3>
+      <div class="velocity-section-header">
+        <span class="velocity-section-name">Mocha iframe</span>
+      </div>
       {{> mochaweb}}
     </div>
     {{/if}}
@@ -92,9 +94,9 @@
 
 <template name="velocityReports">
   <section class="velocity-report {{frameworkStatus}}">
-    <h2 class="velocity-section-header">
+    <div class="velocity-section-header">
       <span class="velocity-section-name">{{name}}</span>
-    </h2>
+    </div>
 
     {{#if isPassed frameworkStatus}}
       <i class="velocity-icon-status"></i>
@@ -117,9 +119,9 @@
     {{#each suites}}
     {{#if suiteNotHidden}}
       <div class="velocity-suite {{suiteStatus}}">
-        <h3 class="velocity-suite-header {{suiteStatus}}">
+        <div class="velocity-suite-header {{suiteStatus}}">
           {{suite}}
-        </h3>
+        </div>
         <table class="velocity-result-table">
           <tbody>
           {{#each reports}}
