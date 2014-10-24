@@ -72,7 +72,7 @@
 
   .velocity-logo {
     color:transparent;
-    margin-left:40px;
+    margin-left:30px;
     background: url("velocity_logo.svg") no-repeat center;
     background-size: auto 100%;
     -webkit-user-select: none;
@@ -137,7 +137,7 @@
     font-family: @velocity-font;
     font-size:68px;
     line-height: 1;
-    margin:0 60px;
+    margin:0 60px 0 50px;
 
     small {
       font-family: @velocity-font-light;
@@ -256,7 +256,8 @@
     }
   }
 
-  .velocity-section-header + .velocity-suite.passed {
+  // TODO: simplify! We only show the time symbol on passing suites, for the first suite header
+  .velocity-report.passed .velocity-icon-status + .velocity-suite {
     position:relative;
     &:before {
       content:'';
