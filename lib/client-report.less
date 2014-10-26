@@ -174,7 +174,6 @@
     font-weight:100;
     font-size:30px;
     line-height:100px;
-
   }
 
   .velocity-summary-text {
@@ -347,7 +346,7 @@
   }
 
   .btn-velocity {
-    background: @velocity-blue;
+    background: darken(@velocity-blue, 10%);
     color: rgb(255, 255, 255);
     border: 0 none;
     border-radius: 3px;
@@ -356,9 +355,17 @@
     padding: 10px 10px;
     font-size: 12px;
     font-family: @velocity-font;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out, background 0.2s ease-in-out;
 
     &:hover {
-      background: darken(@velocity-blue, 10%);
+      opacity:1;
+    }
+    &:focus {
+      outline:none;
+    }
+    &.active {
+      background: @velocity-green;
     }
   }
 

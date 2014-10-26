@@ -80,11 +80,11 @@
   </button>
 
   <div class="velocity-options">
-    <button id="showSuccessful" class="btn-velocity control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
-    <button id="showLogs" class="btn-velocity control-toggle {{showActive "showLogs"}}">Show logs</button>
-    <button id="showFiles" class="btn-velocity control-toggle {{showActive "showFiles"}}">Show files</button>
+    <button id="showSuccessful" class="btn-velocity control-toggle {{showActive 'showSuccessful'}}">Show passing tests</button>
+    <button id="showLogs" class="btn-velocity control-toggle {{showActive 'showLogs'}}">Show logs</button>
+    <button id="showFiles" class="btn-velocity control-toggle {{showActive 'showFiles'}}">Show files</button>
     {{#if mochaPresent}}
-    <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
+    <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive 'showMochaIframe'}}">Show mocha-web iframe</button>
     {{/if}}
     {{#if nightwatchPresent}}
     <button id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
