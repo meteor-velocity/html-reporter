@@ -5,7 +5,7 @@
 
   // Kick it old school.
   box-sizing:content-box;
-  &* {
+  * {
    box-sizing:content-box;
   }
 
@@ -14,7 +14,7 @@
   right: -780px;
   max-width: 580px;
   height:100vh;
-  padding:0 50px 100px;
+  padding:0 50px 0px;
   border-left: @velocity-border;
   background: #fff;
   color: #222;
@@ -146,6 +146,7 @@
 
     small {
       font-family: @velocity-font-light;
+      font-weight:100;
       text-transform: uppercase;
       font-size:20px;
       margin-top:6px;
@@ -356,6 +357,7 @@
     padding: 10px 10px;
     font-size: 12px;
     font-family: @velocity-font;
+    font-weight:400;
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out, background 0.2s ease-in-out;
 
@@ -371,14 +373,7 @@
   }
 
   .velocity-iframe {
-    position: absolute !important;
-    top: -9999px !important;
-    left: -9999px !important;
-  }
-  .velocity-iframe.visible {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
+    display: none;
 
     iframe {
       width:100%;
@@ -386,6 +381,9 @@
       min-height: 500px;
       border:@velocity-border;
     }
+  }
+  .velocity-iframe.visible {
+    display: block;
   }
 
   .velocity-table-box{
