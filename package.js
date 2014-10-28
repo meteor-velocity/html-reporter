@@ -1,32 +1,28 @@
 Package.describe({
   name: "velocity:html-reporter",
   summary: "Reactive Velocity test reports in your app.",
-  version: "0.2.5",
+  version: "0.3.0-rc.1",
   git: "https://github.com/rdickert/velocity-html-reporter.git",
   debugOnly: true
 });
 
-Package.on_use(function(api) {
-  if (api.versionsFrom) {
-    api.versionsFrom("METEOR@0.9.1");
-    api.use('velocity:core@0.2.0', 'client');
-  } else {
-    api.use('velocity', 'client');
-  }
+Package.onUse(function(api) {
+  api.versionsFrom("METEOR@1.0");
+  api.use('velocity:core@1.0.0-rc.1', 'client');
 
   api.use(['underscore', 'templating','amplify', 'less'], 'client');
 
-  api.add_files('lib/reamplify.js', 'client');
+  api.addFiles('lib/reamplify.js', 'client');
 
-  api.add_files('lib/velocity.js', 'client');
-  api.add_files('lib/client-report.html', 'client');
-  api.add_files('lib/client-report.js', 'client');
-  api.add_files('lib/client-report.less', 'client');
-  api.add_files('lib/status-widget.less', 'client');
+  api.addFiles('lib/velocity.js', 'client');
+  api.addFiles('lib/client-report.html', 'client');
+  api.addFiles('lib/client-report.js', 'client');
+  api.addFiles('lib/client-report.less', 'client');
+  api.addFiles('lib/status-widget.less', 'client');
 
-  api.add_files('lib/velocity_logo.svg');
-  api.add_files('lib/velocity_cog.svg');
-  api.add_files('lib/icon-time.png');
+  api.addFiles('lib/velocity_logo.svg');
+  api.addFiles('lib/velocity_cog.svg');
+  api.addFiles('lib/icon-time.png');
 
   // api.export('reamplify', ['client']);
 });
