@@ -6,20 +6,21 @@
 .reporterMixin(@suffix) {
   velocity-reporter@{suffix} #velocityOverlay {
     @import "velocity.less";
+
     z-index: 9000;
 
     // Kick it old school.
     box-sizing:content-box;
-    &* {
+    * {
      box-sizing:content-box;
     }
-    
+
     position: fixed;
     top: 0;
     right: -780px;
     max-width: 580px;
     height:100vh;
-    padding:0 50px 100px;
+    padding:0 50px 0px;
     border-left: @velocity-border;
     background: #fff;
     color: #222;
@@ -32,6 +33,55 @@
 
     &.visible {
       right: 0;
+    }
+
+    h1, h2, h3 {
+      font-family: @velocity-font;
+      color:#222;
+    }
+
+    h3 {
+      font-weight:600;
+      letter-spacing:1px;
+    }
+
+    .velocity-btn-close {
+      border:0 none;
+      background: transparent;
+      display: inline-block;
+      width:50px;
+      height:50px;
+      position:absolute;
+      top:4px;
+      right:4px;
+      color: @velocity-grey;
+      opacity: 0.1;
+      font-size:40px;
+      transition: opacity 0.25s ease-in-out;
+      &:before{
+        content:'✖';
+      }
+      &:after {
+        display: inline-block;
+        vertical-align: middle;
+        width:0;
+        height:0;
+      }
+      &:hover {
+        opacity:0.6;
+      }
+    }
+
+    .velocity-logo {
+      color:transparent;
+      margin:20px 0 20px 25px;
+      height:50px;
+      background: url("velocity_logo.svg") no-repeat center;
+      background-size: auto 100%;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .velocity-icon-status{
@@ -102,6 +152,7 @@
 
       small {
         font-family: @velocity-font-light;
+        font-weight:100;
         text-transform: uppercase;
         font-size:20px;
         margin-top:6px;
@@ -116,54 +167,6 @@
       border-color: @velocity-green;
     }
 
-    h1, h2, h3 {
-      font-family: @velocity-font;
-      color:#222;
-    }
-
-    h3 {
-      font-weight:600;
-      letter-spacing:1px;
-    }
-
-    .velocity-btn-close {
-      border:0 none;
-      background: transparent;
-      display: inline-block;
-      width:50px;
-      height:50px;
-      position:absolute;
-      top:4px;
-      right:4px;
-      color: @velocity-grey;
-      opacity: 0.1;
-      font-size:40px;
-      transition: opacity 0.25s ease-in-out;
-      &:before{
-        content:'✖';
-      }
-      &:after {
-        display: inline-block;
-        vertical-align: middle;
-        width:0;
-        height:0;
-      }
-      &:hover {
-        opacity:0.6;
-      }
-    }
-
-    .velocity-logo {
-      color:transparent;
-      margin:20px 0 20px 25px;
-      height:50px;
-      background: url("velocity_logo.svg") no-repeat center;
-      background-size: auto 100%;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
     .velocity-icon-time {
       display:inline-block;
       width: 100px;
@@ -260,6 +263,7 @@
     }
 
     .velocity-report .velocity-icon-status {
+      -webkit-transform: scale(0.5); // c'mon safari...
       transform: scale(0.5);
       margin: -40px 0;
     }
@@ -294,7 +298,7 @@
         background-size: 100%;
       }
     }
-    
+
     .velocity-result-table {
       width:100%;
       text-align:left;
@@ -360,6 +364,7 @@
       padding: 10px 10px;
       font-size: 12px;
       font-family: @velocity-font;
+      font-weight:400;
       opacity: 0.8;
       transition: opacity 0.2s ease-in-out, background 0.2s ease-in-out;
 
@@ -375,14 +380,7 @@
     }
 
     .velocity-iframe {
-      position: absolute !important;
-      top: -9999px !important;
-      left: -9999px !important;
-    }
-    .velocity-iframe.visible {
-      position: relative !important;
-      top: 0 !important;
-      left: 0 !important;
+      display: none;
 
       iframe {
         width:100%;
@@ -390,6 +388,9 @@
         min-height: 500px;
         border:@velocity-border;
       }
+    }
+    .velocity-iframe.visible {
+      display: block;
     }
 
     .velocity-table-box{
