@@ -14,7 +14,13 @@ Package.on_use(function(api) {
     api.use('velocity', 'client');
   }
 
-  api.use(['underscore', 'templating','amplify', 'less'], 'client');
+  api.use([
+    'underscore',
+    'templating',
+    'amplify',
+    'less',
+    'numtel:webcomponent@0.0.2'
+  ], 'client');
 
   api.add_files('lib/reamplify.js', 'client');
 
