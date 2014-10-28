@@ -7,7 +7,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom("METEOR@0.9.4");
+  api.versionsFrom("METEOR@1.0");
   api.use('velocity:core@1.0.0-rc.1', 'client');
 
   api.use(['underscore', 'templating','amplify', 'less'], 'client');
