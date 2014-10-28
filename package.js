@@ -10,7 +10,13 @@ Package.onUse(function(api) {
   api.versionsFrom("METEOR@1.0");
   api.use('velocity:core@1.0.0-rc.1', 'client');
 
-  api.use(['underscore', 'templating','amplify', 'less'], 'client');
+  api.use([
+    'underscore',
+    'templating',
+    'amplify',
+    'less',
+    'numtel:webcomponent@0.0.2'
+  ], 'client');
 
   api.addFiles('lib/reamplify.js', 'client');
 
