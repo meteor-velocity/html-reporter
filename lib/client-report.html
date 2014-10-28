@@ -3,152 +3,158 @@
 </body>
 
 <template name="velocity">
-  <div id="velocityOverlay" style="display: {{overlayIsVisible}};">
-    <div class="container">
-      {{#if resetting}}
-        {{> velocityResetNotification}}
-      {{/if}}
+  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
+    <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
 
-      <div class="row control-row">
-        <div class="col-md-3 control-pane">
-          {{> velocityControlPanel}}
-        </div>
-        <div class="col-md-9 content-pane">
-          {{#each frameworks}}
-            {{> velocityReports}}
-          {{/each}}
+    <div class="velocity-logo">Velocity</div>
+    {{#if resetting}}
+      {{> velocityResetNotification}}
+    {{/if}}
 
-          {{#if active 'showLogs'}}
-            <h3>Logs</h3>
-            {{> velocityLogs}}
-          {{/if}}
+    {{> velocitySummary}}
 
-          {{#if active 'showFiles'}}
-            <h3>Test Files</h3>
-            {{> velocityTestFiles}}
-          {{/if}}
+    {{> velocityControlPanel}}
 
-          {{#if mochaPresent}}
-          <div class="iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
-            <h3>Mocha iFrame</h3>
-            {{> mochaweb}}
-          </div>
-          {{/if}}
-        </div>
-      </div>
+    {{#each frameworks}}
+      {{> velocityReports}}
+    {{/each}}
+
+    {{#if active 'showLogs'}}
+    <div class="velocity-section-header">
+      <span class="velocity-section-name">Logs</span>
     </div>
+      {{> velocityLogs}}
+    {{/if}}
+
+    {{#if active 'showFiles'}}
+    <div class="velocity-section-header">
+      <span class="velocity-section-name">Test files</span>
+    </div>
+      {{> velocityTestFiles}}
+    {{/if}}
+
+    {{#if mochaPresent}}
+    <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+      <div class="velocity-section-header">
+        <span class="velocity-section-name">Mocha iframe</span>
+      </div>
+      {{> mochaweb}}
+    </div>
+    {{/if}}
   </div>
 
-  <!-- The status widget is the display-toggle circle in the upper-right -->
-  <a id="velocity-status-widget"
-     class="{{statusWidgetClass}} display-toggle"
-     data-target="velocityOverlay"></a>
+  <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle"
+       data-target="velocityOverlay" title="Show test results">
+    <i class="velocity-icon-status"></i>
+  </div>
+</template>
 
+<template name="velocitySummary">
+  <div class="velocity-summary">
+    <i class="velocity-icon-status"></i>
+    <i class="velocity-icon-total">
+    {{#if anyFailed}}
+      {{totalFailedTestCount}}
+      <small>Fail</small>
+    {{else}}
+      {{totalPassedTestCount}}
+      <small>Pass</small>
+    {{/if}}
+    </i>
+    <i class="velocity-icon-time">
+      <span>{{totalTime}}</span>
+    </i>
+  </div>
+  <div class="velocity-summary-text">
+  {{#if anyFailed}}
+    {{totalFailedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} failed
+  {{else}}
+    {{totalPassedTestCount}} {{regularPlural totalPassedTestCount 'test' 's'}} passed in {{totalTime}}
+  {{/if}}
+  </div>
 </template>
 
 <template name="velocityControlPanel">
-  <h1 class="velocity-logo">Velocity</h1>
-  <div class="overall-outcome">
-    <h1> {{> resultLabel aggregateResult}} </h1>
-    <div class="test-counts"> {{totalPassedTestCount}} of {{totalTestCount}} Passed</div>
-  </div>
+  <button class="velocity-options-toggle">
+    <i class="velocity-icon-cog"></i>
+  </button>
 
-  <div class="controls">
-    <div class="framework-nav">
-      <ul class="nav nav-pills nav-stacked">
-        {{#each frameworks}}
-          <li class={{maybeActive}}><a href="#">
-            {{> resultLabel frameworkStatus}}
-            {{name}}
-            {{#if frameworkFailedCount}}
-              <span class="badge">{{frameworkFailedCount}}</span>
-            {{/if}}
-          </a></li>
-        {{/each}}
-      </ul>
-    </div>
-    <div class="options">
-      <h3>Options</h3>
-      <div class="btn-group-vertical">
-        <button id="showSuccessful" class="btn  btn-default control-toggle {{showActive "showSuccessful"}}">Show passing tests</button>
-        <button id="showLogs" class="btn btn-default control-toggle {{showActive "showLogs"}}">Show logs</button>
-        <button id="showFiles" class="btn btn-default control-toggle {{showActive "showFiles"}}">Show files</button>
-        {{#if mochaPresent}}
-        <button id="showMochaIframe" class="btn btn-default control-toggle {{showActive "showMochaIframe"}}">Show mocha-web iframe</button>
-        {{/if}}
-        {{#if nightwatchPresent}}
-        <button id="runNightwatchTests" class="btn btn-default">Run nightwatch tests</button>
-        {{/if}}
-      </div>
-    </div>
+  <div class="velocity-options">
+    <button id="showSuccessful" class="btn-velocity control-toggle {{showActive 'showSuccessful'}}">Show passing tests</button>
+    <button id="showLogs" class="btn-velocity control-toggle {{showActive 'showLogs'}}">Show logs</button>
+    <button id="showFiles" class="btn-velocity control-toggle {{showActive 'showFiles'}}">Show files</button>
+    {{#if mochaPresent}}
+    <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive 'showMochaIframe'}}">Show mocha-web iframe</button>
+    {{/if}}
+    {{#if nightwatchPresent}}
+    <button id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
+    {{/if}}
   </div>
 </template>
 
 <template name="velocityReports">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        {{name}}
-        {{#if frameworkTotalTestCount}}
-          <span class='pull-right framework-results'> {{frameworkPassedTestCount}} of {{frameworkTotalTestCount}} Passed</span>
-        {{/if}}
-      </h3>
+  <section class="velocity-report {{frameworkStatus}}">
+    <div class="velocity-section-header">
+      <span class="velocity-section-name">{{name}}</span>
     </div>
-    <div class="panel-body framework">
-      {{#unless frameworkTotalTestCount}}
-        {{#if noFrameworkFiles}}
-          <div class="addDemoTests">It appears that you don't have any tests for this framework. Would you like to add some tests?</div>
-          <div id="add-demo-test-buttons">
-            <button class="btn btn-primary copy-sample-tests">Add {{name}} sample tests</button>
-          </div>
-          {{else}}
-          <div>Loading <img src="packages/velocity_html-reporter/lib/spinner.gif" alt="Loading"></div>
-        {{/if}}
-      {{/unless}}
 
-      {{#each suites}}
-        {{#if suiteNotHidden}}
-          <h4 class="suite {{suiteStatus}}">
-            {{suite}}
-          </h4>
-          <ul class="reports">
-            {{#each reports}}
-              {{> velocityTestReport}}
-            {{/each}}
-          </ul>
+    {{#if isPassed frameworkStatus}}
+      <i class="velocity-icon-status"></i>
+    {{/if}}
+
+    {{#unless frameworkTotalTestCount}}
+      {{#if noFrameworkFiles}}
+      <div class="velocity-notice-inline">
+        <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
+        <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
+      </div>
+      {{else}}
+      <div class="velocity-loading">
+        <i class="velocity-icon-loading"></i>
+        <p>Loading</p>
+      </div>
+      {{/if}}
+    {{/unless}}
+
+    {{#each suites}}
+    {{#if suiteNotHidden}}
+      <div class="velocity-suite {{suiteStatus}}">
+        <div class="velocity-suite-header {{suiteStatus}}">
+          {{suite}}
+        </div>
+        <table class="velocity-result-table">
+          <tbody>
+          {{#each reports}}
+            {{> velocityTestReport}}
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
         {{/if}}
-      {{/each}}
-    </div>
-  </div>
+    {{/each}}
+  </section>
 </template>
 
 <template name="velocityTestReport">
   {{#if reportNotHidden}}
-  <li>
-    <div class="main-result">
-    <table class="table table-condensed">
-      <tbody>
-        <tr>
-          <td class="result-label-col">{{> resultLabel }}</td>
-          <td class="test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
-          <td class="time-display">{{time}} ms</td>
-        </tr>
-      </tbody>
-    </table>
-
-    </div>
+    <tr class="velocity-test {{#if failed}}failed{{else}}passed{{/if}}">
+      <td class="velocity-test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
+      <td class="velocity-test-time">{{#if failed}}Fail{{else}}{{time}} ms{{/if}}</td>
+    </tr>
     {{#if failed}}
-      <div class="failed-test-info">
-        <strong>Failed:</strong> {{failureMessage}}
-        <br>
+    <tr>
+      <td class="velocity-fail-msg" colspan="2">
+        <i class="velocity-icon-status"></i> {{failureMessage}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
         {{#if failureStackTrace}}
-          <pre class='stack-trace pre-scrollable'>{{failureStackTrace}}</pre>
-        {{else}}
-          No stack trace available.
+          <pre class='velocity-stack-trace'>{{failureStackTrace}}</pre>
         {{/if}}
-      </div>
+      </td>
+    </tr>
     {{/if}}
-  </li>
   {{/if}}
 </template>
 
@@ -156,24 +162,27 @@
   <span class="label {{labelColor result}} result-label">
     <span class="{{glyphiconType result}}"></span>
   </span>
+  &nbsp;
 </template>
 
 <template name="velocityLogs">
-  <table id="velocityLogs" class="table">
-    <thead>
-      <tr>
-        <th>Timestamp</th>
-        <th>Type</th>
-        <th>Message</th>
-        <th>Framework</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each logs}}
-      {{> velocityLog}}
-      {{/each}}
-    </tbody>
-  </table>
+  <div class="velocity-table-box">
+    <table id="velocityLogs" class="velocity-table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Type</th>
+          <th>Message</th>
+          <th>Framework</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each logs}}
+        {{> velocityLog}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="velocityLog">
@@ -186,22 +195,23 @@
 </template>
 
 <template name="velocityTestFiles">
-  <table id="velocityTestFiles"
-         class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Relative Path</th>
-        <th>Target Framework</th>
-        <th>Last Modified</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each testFiles}}
-      {{> velocityTestFile}}
-      {{/each}}
-    </tbody>
-  </table>
+  <div class="velocity-table-box">
+    <table id="velocityTestFiles" class="velocity-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Relative Path</th>
+          <th>Target Framework</th>
+          <th>Last Modified</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each testFiles}}
+        {{> velocityTestFile}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="velocityTestFile">
@@ -215,13 +225,11 @@
 
 <template name="velocityResetNotification">
   <div id="velocityResetNotification">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Please wait</h3>
+      <div class="velocity-notice-inline">
+        <div class="velocity-section-header">
+          <span class="velocity-section-name">Please wait</span>
+        </div>
+        <p>Velocity is updating your files.</p>
       </div>
-      <div class="panel-body">
-        Velocity is updating your files.
-      </div>
-    </div>
   </div>
 </template>

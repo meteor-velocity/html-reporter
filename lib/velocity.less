@@ -1,0 +1,34 @@
+// velocity.less - common vars only.
+
+@velocity-blue: rgb(138,188,239);
+@velocity-blue-alpha: rgba(74, 144, 226, 0.5);
+@velocity-blue-dark: rgb(74, 144, 226);
+@velocity-green: rgb(33, 149, 79);
+@velocity-red: rgb(226, 86, 78);
+@velocity-grey: rgb(74, 74, 74);
+
+@velocity-border: solid 3px @velocity-blue-alpha;
+
+@velocity-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+@velocity-font-light: "HelveticaNeue-UltraLight", "Helvetica Neue Ultra Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+@velocity-font-mono: Menlo, "Courier New", Courier, monospace;
+
+@velocity-anim-throb: velocity-anim-throb 1.4s infinite ease-in-out both;
+
+@keyframes velocity-anim-throb{
+  0%,100% {
+    transform:scale(1)
+  }
+  50%{
+    transform:scale(0.6)
+  }
+}
+
+@-webkit-keyframes velocity-anim-throb{
+  0%,100% {
+    transform:scale(1)
+  }
+  50%{
+    transform:scale(0.6)
+  }
+}
