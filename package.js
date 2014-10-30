@@ -1,7 +1,7 @@
 Package.describe({
   name: "velocity:html-reporter",
   summary: "Reactive Velocity test reports in your app.",
-  version: "0.3.0-rc.2",
+  version: "0.3.0-rc.3",
   git: "https://github.com/rdickert/velocity-html-reporter.git",
   debugOnly: true
 });
