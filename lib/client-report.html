@@ -139,7 +139,7 @@
   {{#if reportNotHidden}}
     <tr class="velocity-test {{#if failed}}failed{{else}}passed{{/if}}">
       <td class="velocity-test-name">{{{name}}}</td> {{! XXX triple-stache allows curly quotes, etc. - worth it? }}
-      <td class="velocity-test-time">{{#if failed}}Fail{{else}}{{time}} ms{{/if}}</td>
+      <td class="velocity-test-time">{{#if failed}}Fail{{else}}{{duration}} ms{{/if}}</td>
     </tr>
     {{#if failed}}
     <tr>
@@ -164,7 +164,7 @@
       <thead>
         <tr>
           <th>Timestamp</th>
-          <th>Type</th>
+          <th>Level</th>
           <th>Message</th>
           <th>Framework</th>
         </tr>
@@ -181,7 +181,7 @@
 <template name="velocityLog">
   <tr class="{{result}}">
     <td>{{timestamp}}</td>
-    <td>{{type}}</td>
+    <td>{{level}}</td>
     <td>{{message}}</td>
     <td>{{framework}}</td>
   </tr>
