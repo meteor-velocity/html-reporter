@@ -106,24 +106,30 @@
       line-height: 1;
     }
   }
-  &.failed .velocity-icon-status{
-    background: @velocity-red;
-    &:before {
-      content:'✖';
-      background: transparent;
+  &.failed, .failed {
+    .velocity-icon-status {
+      background: @velocity-red;
+      &:before {
+        content: '✖';
+        background: transparent;
+      }
     }
   }
-  &.passed .velocity-icon-status{
-    background: @velocity-green;
-    &:before {
-      content:'✔';
-      background: transparent;
+  &.passed, .passed {
+    .velocity-icon-status {
+      background: @velocity-green;
+      &:before {
+        content: '✔';
+        background: transparent;
+      }
     }
   }
-  &.pending .velocity-icon-status{
-    &:before {
-      -webkit-animation: @velocity-anim-throb;
-      animation: @velocity-anim-throb;
+  &.pending, .pending {
+    .velocity-icon-status {
+      &:before {
+        -webkit-animation: @velocity-anim-throb;
+        animation: @velocity-anim-throb;
+      }
     }
   }
 
