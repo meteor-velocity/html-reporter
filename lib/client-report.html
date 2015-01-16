@@ -3,6 +3,7 @@
 </body>
 
 <template name="velocity">
+  {{#if notInMirror}}
   <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
     <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
 
@@ -48,6 +49,7 @@
        data-target="velocityOverlay" title="Show test results">
     <i class="velocity-icon-status"></i>
   </div>
+  {{/if}}
 </template>
 
 <template name="velocitySummary">
