@@ -4,51 +4,53 @@
 
 <template name="velocity">
   {{#if notInMirror}}
-  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
-    <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
+    <div id="velocity">
+      <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
+        <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
 
-    <div class="velocity-logo">Velocity</div>
+        <div class="velocity-logo">Velocity</div>
 
-    {{#if resetting}}
-      {{> velocityResetNotification}}
-    {{/if}}
+        {{#if resetting}}
+          {{> velocityResetNotification}}
+        {{/if}}
 
-    {{> velocitySummary}}
+        {{> velocitySummary}}
 
-    {{> velocityControlPanel}}
+        {{> velocityControlPanel}}
 
-    {{#each frameworks}}
-      {{> velocityReports}}
-    {{/each}}
+        {{#each frameworks}}
+          {{> velocityReports}}
+        {{/each}}
 
-    {{#if active 'showLogs'}}
-    <div class="velocity-section-header">
-      <span class="velocity-section-name">Logs</span>
-    </div>
-      {{> velocityLogs}}
-    {{/if}}
+        {{#if active 'showLogs'}}
+        <div class="velocity-section-header">
+          <span class="velocity-section-name">Logs</span>
+        </div>
+          {{> velocityLogs}}
+        {{/if}}
 
-    {{#if active 'showFiles'}}
-    <div class="velocity-section-header">
-      <span class="velocity-section-name">Test files</span>
-    </div>
-      {{> velocityTestFiles}}
-    {{/if}}
+        {{#if active 'showFiles'}}
+        <div class="velocity-section-header">
+          <span class="velocity-section-name">Test files</span>
+        </div>
+          {{> velocityTestFiles}}
+        {{/if}}
 
-    {{#if mochaPresent}}
-    <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
-      <div class="velocity-section-header">
-        <span class="velocity-section-name">Mocha iframe</span>
+        {{#if mochaPresent}}
+        <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
+          <div class="velocity-section-header">
+            <span class="velocity-section-name">Mocha iframe</span>
+          </div>
+          {{> mochaweb}}
+        </div>
+        {{/if}}
       </div>
-      {{> mochaweb}}
-    </div>
-    {{/if}}
-  </div>
 
-  <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle"
-       data-target="velocityOverlay" title="Show test results">
-    <i class="velocity-icon-status"></i>
-  </div>
+      <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle"
+           data-target="velocityOverlay" title="Show test results">
+        <i class="velocity-icon-status"></i>
+      </div>
+    </div>
   {{/if}}
 </template>
 

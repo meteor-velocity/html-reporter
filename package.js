@@ -12,6 +12,9 @@ Package.onUse(function(api) {
 
   api.use(['underscore', 'templating','amplify@1.0.0', 'less'], 'client');
 
+  api.addFiles('dist/mutationObserver.polyfill.js', 'client');
+  api.addFiles('dist/shadowStyles.js', 'client');
+
   api.addFiles('lib/reamplify.js', 'client');
 
   api.addFiles('lib/velocity.js', 'client');
