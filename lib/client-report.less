@@ -4,24 +4,24 @@
   z-index: 9000;
 
   // Kick it old school.
-  box-sizing:content-box;
+  box-sizing: content-box;
   * {
-   box-sizing:content-box;
+    box-sizing: content-box;
   }
 
   position: fixed;
   top: 0;
   right: -780px;
   max-width: 580px;
-  height:100vh;
-  padding:0 50px 0px;
+  height: 100vh;
+  padding: 0 50px 0px;
   border-left: @velocity-border;
   background: #fff;
   color: #222;
   font-family: @velocity-font;
   font-weight: 300;
   font-size: 14px;
-  text-align:center;
+  text-align: center;
   overflow-y: auto;
   transition: right 0.25s ease-in-out;
 
@@ -31,45 +31,45 @@
 
   h1, h2, h3 {
     font-family: @velocity-font;
-    color:#222;
+    color: #222;
   }
 
   h3 {
-    font-weight:600;
-    letter-spacing:1px;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
   .velocity-btn-close {
-    border:0 none;
+    border: 0 none;
     background: transparent;
     display: inline-block;
-    width:50px;
-    height:50px;
-    position:absolute;
-    top:4px;
-    right:4px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
     color: @velocity-grey;
     opacity: 0.1;
-    font-size:40px;
+    font-size: 40px;
     transition: opacity 0.25s ease-in-out;
-    &:before{
-      content:'✖';
+    &:before {
+      content: '✖';
     }
     &:after {
       display: inline-block;
       vertical-align: middle;
-      width:0;
-      height:0;
+      width: 0;
+      height: 0;
     }
     &:hover {
-      opacity:0.6;
+      opacity: 0.6;
     }
   }
 
   .velocity-logo {
-    color:transparent;
-    margin:20px 0 20px 25px;
-    height:50px;
+    color: transparent;
+    margin: 20px 0 20px 25px;
+    height: 50px;
     background: url("velocity_logo.svg") no-repeat center;
     background-size: auto 100%;
     -webkit-user-select: none;
@@ -78,10 +78,10 @@
     user-select: none;
   }
 
-  .velocity-icon-status{
-    display:inline-block;
+  .velocity-icon-status {
+    display: inline-block;
     width: 100px;
-    height:100px;
+    height: 100px;
     background: white;
     border: 20px solid @velocity-blue;
     border-radius: 100%;
@@ -90,10 +90,10 @@
     font-size: 50px;
     vertical-align: middle;
     text-align: center;
-    color:white;
+    color: white;
 
     &:before {
-      content:'';
+      content: '';
       display: block;
       position: absolute;
       top: 25%;
@@ -101,7 +101,7 @@
       width: 50%;
       height: 50%;
       background: @velocity-blue-dark;
-      border-radius:100%;
+      border-radius: 100%;
       font-style: normal;
       line-height: 1;
     }
@@ -133,29 +133,29 @@
     }
   }
 
-  .velocity-summary .velocity-icon-status{
+  .velocity-summary .velocity-icon-status {
     vertical-align: -28px;
   }
 
   .velocity-icon-total {
-    display:inline-block;
+    display: inline-block;
     min-width: 100px;
     background: white;
     border: 8px solid @velocity-blue;
     border-radius: 10px;
-    padding:2px 0 8px;
-    font-style:normal;
+    padding: 2px 0 8px;
+    font-style: normal;
     font-family: @velocity-font;
-    font-size:68px;
+    font-size: 68px;
     line-height: 1;
-    margin:0 60px 0 50px;
+    margin: 0 60px 0 50px;
 
     small {
       font-family: @velocity-font-light;
-      font-weight:100;
+      font-weight: 100;
       text-transform: uppercase;
-      font-size:20px;
-      margin-top:6px;
+      font-size: 20px;
+      margin-top: 6px;
       display: block;
       letter-spacing: 4px;
     }
@@ -168,95 +168,95 @@
   }
 
   .velocity-icon-time {
-    display:inline-block;
+    display: inline-block;
     width: 100px;
     height: 100px;
     background: transparent url("icon-time.png") no-repeat center;
     background-size: 100%;
-    border:solid 10px @velocity-grey;
-    border-radius:100%;
+    border: solid 10px @velocity-grey;
+    border-radius: 100%;
     vertical-align: 30px;
     font-style: normal;
-    font-family:@velocity-font-light;
-    font-weight:100;
-    font-size:30px;
-    line-height:100px;
+    font-family: @velocity-font-light;
+    font-weight: 100;
+    font-size: 30px;
+    line-height: 100px;
   }
 
   .velocity-summary-text {
     font-size: 40px;
     font-weight: 300;
-    letter-spacing:1px;
+    letter-spacing: 1px;
     font-family: @velocity-font;
-    color:#222;
+    color: #222;
     line-height: 2;
-    margin:5px 0;
+    margin: 5px 0;
   }
 
   .velocity-icon-cog {
-    width:16px;
+    width: 16px;
     height: 16px;
     display: inline-block;
     background: url("velocity_cog.svg") no-repeat center;
     background-size: auto 100%;
   }
 
-  .velocity-options-toggle{
+  .velocity-options-toggle {
     border: solid 1px #ddd;
     border-radius: 3px;
     background: #efefef;
     opacity: 0.4;
-    padding:5px 5px 4px;
-    margin:0;
-    line-height:1;
+    padding: 5px 5px 4px;
+    margin: 0;
+    line-height: 1;
     transition: opacity 0.25s ease-in-out;
     &:hover {
       opacity: 0.9;
     }
     &:focus {
-      outline:none;
+      outline: none;
     }
   }
 
   .velocity-options {
-    margin:0 0 -40px;
-    opacity:0;
+    margin: 0 0 -40px;
+    opacity: 0;
     overflow: hidden;
     transition: margin 0.3s linear, opacity 0.3s ease-in-out, max-height 0.3s linear;
     &.visible {
-      margin:20px 0 10px;
-      opacity:1;
+      margin: 20px 0 10px;
+      opacity: 1;
     }
   }
 
   .velocity-report {
-    min-height:150px;
+    min-height: 150px;
   }
 
   .velocity-section-header {
     border-bottom: @velocity-border;
     min-height: 30px;
-    margin:10px 0 40px;
-    background:rgb(255,255,255);
+    margin: 10px 0 40px;
+    background: rgb(255, 255, 255);
 
-    .velocity-section-name{
-      background:inherit;
+    .velocity-section-name {
+      background: inherit;
       color: #AAA;
       font-family: @velocity-font-light;
-      font-weight:400;
+      font-weight: 400;
       font-size: 20px;
-      font-weight:100;
-      letter-spacing:8px;
-      position:relative;
+      font-weight: 100;
+      letter-spacing: 8px;
+      position: relative;
       top: 16px;
       padding: 0 2px 0 10px;
     }
   }
 
-  .velocity-suite{
+  .velocity-suite {
     border-bottom: solid 1px #efefef;
     padding-bottom: 15px;
-    &:last-child{
+    &:last-child {
       border-bottom: 0 none;
       padding-bottom: 0;
     }
@@ -269,11 +269,11 @@
   }
 
   .velocity-suite-header {
-    font-family:@velocity-font;
-    font-weight:600;
-    letter-spacing:1px;
-    margin:20px 0 5px;
-    text-align:left;
+    font-family: @velocity-font;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 20px 0 5px;
+    text-align: left;
 
     &.passed {
       color: @velocity-green;
@@ -285,27 +285,27 @@
 
   // TODO: simplify! We only show the time symbol on passing suites, for the first suite header
   .velocity-report.passed .velocity-icon-status + .velocity-suite {
-    position:relative;
+    position: relative;
     &:before {
-      content:'';
+      content: '';
       display: block;
-      position:absolute;
+      position: absolute;
       top: -20px;
-      right:7px;
+      right: 7px;
       width: 34px;
-      height:34px;
+      height: 34px;
       background: transparent url("icon-time.png") no-repeat center;
       background-size: 100%;
     }
   }
-  
+
   .velocity-result-table {
-    width:100%;
-    text-align:left;
+    width: 100%;
+    text-align: left;
 
     .velocity-test-name,
     .velocity-test-time {
-      letter-spacing:1px;
+      letter-spacing: 1px;
       padding: 5px 0;
     }
     .velocity-test-time {
@@ -315,31 +315,31 @@
     }
   }
 
-  .velocity-test.failed .velocity-test-time{
-    color:@velocity-red;
+  .velocity-test.failed .velocity-test-time {
+    color: @velocity-red;
   }
 
-  .velocity-test.passed .velocity-test-time{
-    color:@velocity-green
+  .velocity-test.passed .velocity-test-time {
+    color: @velocity-green
   }
 
-  .velocity-fail-msg{
-    font-size:20px;
-    line-height:1.5;
+  .velocity-fail-msg {
+    font-size: 20px;
+    line-height: 1.5;
     letter-spacing: 1px;
   }
 
   .velocity-fail-msg .velocity-icon-status {
-    width:20px;
-    height:20px;
-    border-width:0px;
-    font-size:10px;
-    color:transparent;
-    margin:0 8px 0 -36px;
+    width: 20px;
+    height: 20px;
+    border-width: 0px;
+    font-size: 10px;
+    color: transparent;
+    margin: 0 8px 0 -36px;
   }
 
   .velocity-stack-trace {
-    font-family:@velocity-font-mono;
+    font-family: @velocity-font-mono;
     font-size: 11px;
     letter-spacing: 1px;
     max-width: 525px;
@@ -365,15 +365,15 @@
     padding: 10px 10px;
     font-size: 12px;
     font-family: @velocity-font;
-    font-weight:400;
+    font-weight: 400;
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out, background 0.2s ease-in-out;
 
     &:hover {
-      opacity:1;
+      opacity: 1;
     }
     &:focus {
-      outline:none;
+      outline: none;
     }
     &.active {
       background: @velocity-green;
@@ -384,20 +384,20 @@
     display: none;
 
     iframe {
-      width:100%;
+      width: 100%;
       margin-bottom: 50px;
       min-height: 500px;
-      border:@velocity-border;
+      border: @velocity-border;
     }
   }
   .velocity-iframe.visible {
     display: block;
   }
 
-  .velocity-table-box{
+  .velocity-table-box {
     max-width: 100%;
     overflow-x: auto;
-    margin:0 0 50px;
+    margin: 0 0 50px;
   }
 
   .velocity-table {
@@ -406,25 +406,25 @@
     text-align: left;
     border-collapse: collapse;
     white-space: nowrap;
-    margin:0;
+    margin: 0;
     td, th {
       border-bottom: solid 1px white;
-      padding:8px 10px;
+      padding: 8px 10px;
     }
-    th{
+    th {
       border-bottom: solid 2px rgb(180, 180, 180)
     }
   }
 
-  .velocity-icon-loading{
-    display:block;
-    margin:0 auto;
-    width:20px;
-    height:20px;
-    background:#4990E2;
-    border-radius:100%;
+  .velocity-icon-loading {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    background: #4990E2;
+    border-radius: 100%;
     -webkit-animation: @velocity-anim-throb;
-            animation: @velocity-anim-throb;
+    animation: @velocity-anim-throb;
   }
 }
 
@@ -437,22 +437,22 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0, .7);
-  font-size:2em;
+  background-color: rgba(0, 0, 0, .7);
+  font-size: 2em;
 
   &:before {
-    content:'';
+    content: '';
     display: inline-block;
-    width:0;
-    height:100%;
+    width: 0;
+    height: 100%;
     vertical-align: middle;
   }
 
   .velocity-notice-inline {
-    border:solid 3px rgba(74, 74, 74, 0.1);
-    background-color: rgb(255,255,255);
+    border: solid 3px rgba(74, 74, 74, 0.1);
+    background-color: rgb(255, 255, 255);
     display: inline-block;
-    width:95%;
+    width: 95%;
     max-width: 500px;
   }
 }
