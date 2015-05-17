@@ -1,7 +1,7 @@
 Package.describe({
   name: 'velocity:html-reporter',
   summary: 'Reactive Velocity test reports in your app.',
-  version: '0.6.0',
+  version: '0.6.1',
   git: 'https://github.com/meteor-velocity/html-reporter.git',
   debugOnly: true
 });
