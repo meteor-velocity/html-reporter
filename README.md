@@ -3,10 +3,14 @@ Velocity HTML Reporter
 HTML reporter for Meteor's [Velocity testing framework](https://velocity.meteor.com). This reporter
 will show you test results in your app.
 
-## To use
+## Installation
 Install this and at least one Velocity-compatible testing framework then add this package:
 
 `meteor add velocity:html-reporter`
+
+## Usage
+If you want to hide the reporter in development mode, you can press
+ctrl + v
 
 ## Settings
 You can set the position of the reporter by adding a settings file like this:
