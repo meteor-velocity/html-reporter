@@ -4,7 +4,8 @@
 
 <template name="velocity">
   {{#if showVelocity}}
-  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}">
+  <div id="velocityOverlay" class="{{#if overlayIsVisible}}visible{{/if}} {{statusWidgetClass}}"
+       aria-hidden="{{#if overlayIsVisible}}false{{else}}true{{/if}}">
     <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
 
     <div class="velocity-logo">Velocity</div>
@@ -45,7 +46,7 @@
     {{/if}}
   </div>
 
-  <div id="velocity-status-widget" class="{{statusWidgetClass}} display-toggle"
+  <div tabindex="{{statusWidgetTabIndex}}" id="velocity-status-widget" aria-label="{{statusWidgetClass}} " class="{{statusWidgetPosition}} {{statusWidgetClass}} display-toggle"
        data-target="velocityOverlay" title="Show test results">
     <i class="velocity-icon-status"></i>
   </div>
@@ -78,19 +79,18 @@
 </template>
 
 <template name="velocityControlPanel">
-  <button class="velocity-options-toggle">
+  <button aria-label="reporter options" class="velocity-options-toggle">
     <i class="velocity-icon-cog"></i>
   </button>
 
   <div class="velocity-options">
-    <button id="showSuccessful" class="btn-velocity control-toggle {{showActive 'showSuccessful'}}">Show passing tests</button>
-    <button id="showLogs" class="btn-velocity control-toggle {{showActive 'showLogs'}}">Show logs</button>
-    <button id="showFiles" class="btn-velocity control-toggle {{showActive 'showFiles'}}">Show files</button>
+    <button aria-label="Show passing tests" id="showSuccessful" class="btn-velocity control-toggle {{showActive 'showSuccessful'}}">Show passing tests</button>
+    <button aria-label="Show files" id="showFiles" class="btn-velocity control-toggle {{showActive 'showFiles'}}">Show files</button>
     {{#if mochaPresent}}
-    <button id="showMochaIframe" class="btn-velocity control-toggle {{showActive 'showMochaIframe'}}">Show mocha-web iframe</button>
+    <button aria-label="Show mocha iframe" id="showMochaIframe" class="btn-velocity control-toggle {{showActive 'showMochaIframe'}}">Show mocha iframe</button>
     {{/if}}
     {{#if nightwatchPresent}}
-    <button id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
+    <button aria-label="Run nightwatch tests" id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
     {{/if}}
   </div>
 </template>
@@ -109,7 +109,7 @@
       {{#if noFrameworkFiles}}
       <div class="velocity-notice-inline">
         <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
-        <button class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
+        <button aria-label="Add sample tests" class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
       </div>
       {{else}}
       <div class="velocity-loading">

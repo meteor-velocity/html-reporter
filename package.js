@@ -1,14 +1,14 @@
 Package.describe({
   name: 'velocity:html-reporter',
   summary: 'Reactive Velocity test reports in your app.',
-  version: '0.5.3',
+  version: '0.6.0',
   git: 'https://github.com/meteor-velocity/html-reporter.git',
   debugOnly: true
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.0');
-  api.use('velocity:core@0.6.0-rc.7', 'client');
+  api.use('velocity:core@0.6.3', 'client');
 
   api.use(['underscore', 'templating','amplify@1.0.0', 'less'], 'client');
 
@@ -23,6 +23,4 @@ Package.onUse(function(api) {
   api.addFiles('lib/velocity_logo.svg');
   api.addFiles('lib/velocity_cog.svg');
   api.addFiles('lib/icon-time.png');
-
-  // api.export('reamplify', ['client']);
 });

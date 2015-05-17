@@ -1,11 +1,35 @@
-velocity-html-reporter
+Velocity HTML Reporter
 ======================
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meteor-velocity/html-reporter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-HTML reporter for Meteor's [Velocity testing framework](https://github.com/xolvio/velocity)
+HTML reporter for Meteor's [Velocity testing framework](https://velocity.meteor.com). This reporter
+will show you test results in your app.
 
 ## To use
-Install this and at least one Velocity-compatible testing framework, such as [mocha-web-velocity](http://atmospherejs.com/package/mocha-web-velocity) or [jasmine-unit](http://atmospherejs.com/package/jasmine-unit), then run your app with `mrt`.
+Install this and at least one Velocity-compatible testing framework then add this package:
 
-For more information, see [the main Velocity repo](https://github.com/xolvio/velocity).
+`meteor add velocity:html-reporter`
 
+## Settings
+You can set the position of the reporter by adding a settings file like this:
+
+```
+{
+  "public": {
+    "velocity:html-reporter": {
+      "position": "bottom right",
+      "tab-index" : 1
+    }
+  }
+}
+```
+
+Available positional options are:
+* `"top right"`
+* `"top left"`
+* `"bottom right"`
+* `"bottom left"`
+
+The "tab-index" field is used for people with disabilities to access the reporter via keyboard
+shortcuts.
+
+
+You may also be interested in the [`velocity:console-reporter` package](https://github.com/meteor-velocity/console-reporter/)
