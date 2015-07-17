@@ -89,9 +89,12 @@
       {{#if mochaPresent}}
           <button aria-label="Show mocha iframe" id="showMochaIframe" class="btn-velocity control-toggle {{showActive 'showMochaIframe'}}">Show mocha iframe</button>
       {{/if}}
-      {{#if nightwatchPresent}}
-          <button aria-label="Run nightwatch tests" id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
-      {{/if}}
+        {{#if nightwatchPresent}}
+            <button aria-label="Run nightwatch tests" id="runNightwatchTests" class="btn-velocity">Run nightwatch tests</button>
+        {{/if}}
+        {{#if cucumberPresent}}
+            <button aria-label="Run Cucumber" id="runCucumber" class="btn-velocity">Run Cucumber</button>
+        {{/if}}
     </div>
 </template>
 
