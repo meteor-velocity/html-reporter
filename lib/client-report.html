@@ -101,7 +101,7 @@
 <template name="velocityReports">
     <section class="velocity-report {{frameworkStatus}}">
         <div class="velocity-section-header">
-            <span class="velocity-section-name">{{name}}</span>
+            <span class="velocity-section-name"><a href="{{mirrorUrl}}" target="_blank">{{name}} - mirror {{mirrorStatus}}</a> </span>
         </div>
 
       {{#if isPassed frameworkStatus}}
