@@ -13,11 +13,11 @@ Package.onUse(function(api) {
 
   api.use(['underscore', 'templating','amplify@1.0.0', 'less'], 'client');
 
-  api.addFiles('lib/reamplify.js', 'client');
+  api.addFiles('lib/reamplify.es6.js', 'client');
 
-  api.addFiles('lib/velocity.js', 'client');
+  api.addFiles('lib/velocity.es6.js', 'client');
   api.addFiles('lib/client-report.html', 'client');
-  api.addFiles('lib/client-report.js', 'client');
+  api.addFiles('lib/client-report.es6.js', 'client');
   api.addFiles('lib/client-report.less', 'client');
   api.addFiles('lib/status-widget.less', 'client');
 
