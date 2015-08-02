@@ -8,6 +8,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.1.0.2');
+  api.use('grigio:babel@0.1.6');
   api.use('velocity:core@0.7.1', 'client');
 
   api.use(['underscore', 'templating','amplify@1.0.0', 'less'], 'client');
