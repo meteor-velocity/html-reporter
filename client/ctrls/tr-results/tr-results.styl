@@ -1,0 +1,26 @@
+@import 'test-runner.import'
+
+
+.tr-results
+  font-family $TR_FONT_SANS
+  padding-bottom 50px
+
+  h1, h2, h3, h4
+    padding 0
+    margin 0
+    font-weight 400
+    font-size 16px
+    color darken(white, 80%)
+
+  > .tr-empty-success
+    abs-center-x()
+    package-image 'respondly_test-reporter', 'thumbs-up.svg', 202, 219
+    top 120px
+    opacity 0.1
+
+  > .tr-empty-failure
+    abs-center-x()
+    package-image 'respondly_test-reporter', 'sad-bunny.svg', 158, 193
+    top 120px
+    opacity 0.1
+

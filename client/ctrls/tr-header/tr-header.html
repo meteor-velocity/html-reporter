@@ -1,0 +1,40 @@
+<template name='tr-header'>
+  <div class='tr-header {{ cssClass }}'>
+
+    <div class='tr-progress-bar' style='{{ progressStyle }}'></div>
+
+    <div class='tr-content-center'>
+      <div class='tr-title-outer'>
+        {{#with title}}
+          <h1>{{ main }}</h1>
+          {{#if right}}
+            <div class='tr-title-right'>{{ right }}</div>
+          {{/if}}
+        {{/with}}
+      </div>
+
+      <div class='tr-tabs-outer'>
+        {{> ctrl type='tr-header-tab' id='total' }}
+        {{> ctrl type='tr-header-tab' id='passed' }}
+        {{> ctrl type='tr-header-tab' id='failed' }}
+        {{> ctrl type='tr-header-tab' id='skipped' }}
+        <div class='tr-selection'></div>
+
+        <div class='tr-right'>
+          {{#with elapsed}}
+            <div class='tr-elapsed'>
+              <span>{{ time }}</span>
+              <div class='tr-dim'>{{ unit }}</div>
+            </div>
+          {{/with}}
+          <div class='tr-percent'>
+            <span>{{ percent }}%</span>
+            <div class='tr-dim'>complete</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</template>

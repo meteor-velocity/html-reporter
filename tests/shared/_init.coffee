@@ -1,0 +1,2 @@
+#= base
+@expect = chai.expect

@@ -1,0 +1,57 @@
+@import 'test-runner.import'
+
+
+.tr-result-spec
+  position relative
+  margin-bottom 10px
+  padding-bottom 12px
+  padding-top 2px
+  cursor default
+
+  border-bottom dashed 1px rgba(black, 0.15)
+  &:last-child
+    border-bottom none
+
+  // ------------------------------------------------------
+
+  BADGE_PADDING = 30
+  &.tr-client
+    > h2
+      padding-right 65px + BADGE_PADDING
+  &.tr-server
+    > h2
+      padding-right 70px + BADGE_PADDING
+  &.tr-client-server
+    > h2
+      padding-right 115px + BADGE_PADDING
+
+  // ------------------------------------------------------
+
+  .tr-tick
+    color $TR_GREEN
+  .tr-cross
+    color $TR_PINK
+
+  // ------------------------------------------------------
+
+  .tr-right
+    abs-pos null, 2, 0, null
+    .tr-badge
+      padding 3px 10px
+      border-radius 4px
+      background rgba(black, 0.05)
+      color rgba(black, 0.3)
+      font-size 11px
+      font-weight 600
+
+    .tr-time
+      font-size 13px
+      color rgba(black, 0.3)
+
+  // ------------------------------------------------------
+
+  .tr-errors
+    padding-left 16px
+    margin-top 15px
+    margin-bottom 8px
+

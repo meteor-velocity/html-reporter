@@ -1,0 +1,33 @@
+@import 'test-runner.import'
+
+
+
+code
+  code-highlight()
+
+
+// ------------------------------------------------------
+
+
+.tr-reporter
+  font-family $TR_FONT_SANS
+  h1, h2, h3
+    font-family $TR_FONT_SANS
+
+
+// ------------------------------------------------------
+
+
+.tr-content-center
+  position relative
+  margin 0 auto
+  @media $WIDTH_WIDE
+    width 900px
+
+  @media $WIDTH_NORMAL
+    width 600px
+
+  @media $WIDTH_NARROW
+    width 400px
+
+

@@ -1,0 +1,38 @@
+<template name='tr-result-spec'>
+  <div class='tr-result-spec {{ cssClass }}'>
+    <h2>
+      {{#if api.passed}}
+        <span class='tr-tick'>&#10004;</span>
+      {{/if}}
+
+      {{#if api.skipped}}
+        {{! some other icon maybe..?}}
+      {{/if}}
+
+      {{#if api.failed}}
+        <span class='tr-cross'>&#10008;</span>
+      {{/if}}
+
+      {{ name }}
+    </h2>
+
+    <div class='tr-right'>
+      {{#with badge}}
+        <div class='tr-badge'>
+          {{ this }}
+        </div>
+      {{/with}}
+    </div>
+
+    {{#if api.failed}}
+      <div class='tr-errors'>
+        {{#with api.clientResult.error}}
+          {{> ctrl type='tr-result-error' data=this }}
+        {{/with}}
+        {{#with api.serverResult.error}}
+          {{> ctrl type='tr-result-error' data=this }}
+        {{/with}}
+      </div>
+    {{/if}}
+  </div>
+</template>

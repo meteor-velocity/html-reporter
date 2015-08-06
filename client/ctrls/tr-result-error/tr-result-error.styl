@@ -1,0 +1,63 @@
+@import 'test-runner.import'
+
+
+.tr-result-error
+  PADDING = 14px
+  position relative
+  margin-bottom 8px
+  padding PADDING
+  background $TR_PINK
+  border-radius 3px
+  > h2
+    color white !important
+    cursor pointer
+
+  .tr-badge
+    display inline-block
+    padding 3px 10px
+    border-radius 4px
+    background rgba(white, 0.8)
+    color $TR_PINK
+    font-size 11px
+    font-weight 600
+    text-transform uppercase
+
+  .tr-toggle-details
+    position relative
+    float right
+    opacity 0.5
+    font-size 11px
+    top 3px
+    &:hover
+      text-decoration underline
+      cursor pointer
+      color white
+
+  // ------------------------------------------------------
+
+  > .tr-trace
+    background rgba(white, 0.6)
+    display none
+    color rgba(black, 0.7)
+    font-size 13px
+    line-height 16px
+    margin-top 12px
+    padding 12px
+    border-radius 4px
+    overflow hidden
+
+    .tr-path
+      opacity 0.5
+
+    ul
+      padding 0
+      margin 0
+      margin-left 15px
+      li
+        margin-bottom 10px
+
+  &.details-visible
+    > .tr-trace
+      display block
+
+

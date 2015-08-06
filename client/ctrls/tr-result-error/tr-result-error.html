@@ -1,0 +1,13 @@
+<template name='tr-result-error'>
+  <div class='tr-result-error {{ cssClass }}'>
+    <h2>
+      <div class='tr-toggle-details'>{{ detailLabel }}</div>
+      <div class='tr-badge'>{{ domain }}</div>
+      {{ title }}
+    </h2>
+
+    <div class='tr-trace'>
+      {{stackTrace}}
+    </div>
+  </div>
+</template>

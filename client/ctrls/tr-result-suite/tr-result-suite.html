@@ -1,0 +1,12 @@
+<template name='tr-result-suite'>
+  <div class='tr-result-suite {{ cssClass }}'>
+    {{#unless api.isRoot}}
+      <h1>{{ data.name }}</h1>
+    {{/unless}}
+
+    <div class='tr-content'>
+      <div class='tr-specs'></div>
+      <div class='tr-suites'></div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,15 @@
+<template name='tr-results'>
+  <div class='tr-results'>
+
+    {{#if api.isEmptySuccessVisible}}
+      <div class='tr-empty-success'></div>
+    {{/if}}
+
+    {{#if api.isEmptyFailureVisible}}
+      <div class='tr-empty-failure'></div>
+    {{/if}}
+
+    <div class='tr-results-list'></div>
+
+  </div>
+</template>

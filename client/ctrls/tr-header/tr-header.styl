@@ -1,0 +1,87 @@
+@import 'test-runner.import'
+
+
+.tr-header
+  HEIGHT = $HEADER_HEIGHT
+  position relative
+  min-height HEIGHT
+  font-family $TR_FONT_SANS
+  color white
+  background $TR_BLUE
+
+  *
+    box-sizing border-box
+
+  h1, h2
+    font-weight 100
+    margin 0
+    padding 0
+    color white
+
+  h1
+    font-size 56px
+    line-height 60px
+    padding-bottom 8px
+    border-bottom solid 1px rgba(white, 0.2)
+
+  .tr-content-center
+    height HEIGHT
+
+
+  .tr-title-outer
+    abs-pos 0, 100, 0, null
+    .tr-title-right
+      abs-pos null, null, 0, 7
+      font-size 16px
+      opacity 0.5
+      @media $WIDTH_NARROW
+        display none
+
+
+  .tr-progress-bar
+    background white
+    abs-pos 0, null, null, 4px
+    height 3px
+    opacity 0.7
+
+
+  .tr-tabs-outer
+    abs-pos 0, null, 0, 0
+    height 42px
+    .tr-selection
+      abs-pos 0, null, null, 0
+      width 130px
+      height 7px
+      background $TR_PINK
+
+  &.tr-loaded
+    .tr-tabs-outer .tr-selection
+      transition transform 0.2s
+
+
+  // ------------------------------------------------------
+
+  .tr-right
+    abs-pos null, null, 0, 12
+    font-size 14px
+    line-height 18px
+    text-align right
+    @media $WIDTH_NARROW
+      display none
+
+    .tr-dim
+      opacity 0.4
+      min-width 60px
+      display inline-block
+      text-align left
+      margin-left 3px
+
+  // ------------------------------------------------------
+
+  &.tr-has-failures
+    background $TR_PINK
+    .tr-tabs-outer
+      .tr-selection
+        background $TR_BLUE
+
+

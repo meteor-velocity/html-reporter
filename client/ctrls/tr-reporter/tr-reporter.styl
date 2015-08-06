@@ -1,0 +1,24 @@
+@import 'test-runner.import'
+
+
+.tr-reporter
+  font-family $TR_FONT_SANS
+
+  .tr-header
+    z-index 9999
+
+  .tr-body
+    padding-top 40px
+
+
+  // ------------------------------------------------------
+
+
+  &.tr-header-fixed
+    padding-top $HEADER_HEIGHT
+    > .tr-header
+      fixed-pos 0, -225px, 0, null
+      box-shadow 0px 3px 10px 0px rgba(black, 0.1)
+
+
+
