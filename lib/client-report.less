@@ -67,6 +67,7 @@
   }
 
   .velocity-logo {
+    position: relative;
     color: transparent;
     margin: 20px 0 20px 25px;
     height: 60px;
@@ -76,6 +77,13 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    .velocity-icon-status {
+      top: 16px;
+      left: 50%;
+      margin-left: -38px;
+      float: left;
+    }
   }
 
   .velocity-icon-status {
@@ -129,12 +137,6 @@
         animation: @velocity-anim-throb;
       }
     }
-  }
-
-  .velocity-summary .velocity-icon-status {
-    top: -64px;
-    left: 265px;
-    float: left;
   }
 
   .velocity-icon-total {

@@ -8,7 +8,10 @@
            aria-hidden="{{#if overlayIsVisible}}false{{else}}true{{/if}}">
           <button class="velocity-btn-close display-toggle" data-target="velocityOverlay"></button>
 
-          <div class="velocity-logo">Velocity</div>
+          <div class="velocity-logo">
+            Velocity
+            <i class="velocity-icon-status"></i>
+          </div>
 
         {{#if resetting}}
           {{> velocityResetNotification}}
@@ -54,9 +57,6 @@
 </template>
 
 <template name="velocitySummary">
-    <div class="velocity-summary">
-        <i class="velocity-icon-status"></i>
-    </div>
     <div class="velocity-summary-text">
       {{#if anyFailed}}
         {{totalFailedTestCount}} {{regularPlural totalFailedTestCount 'test' 's'}} failed
