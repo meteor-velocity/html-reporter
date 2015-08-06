@@ -26,7 +26,9 @@ TestReporterController = stampit().enclose ->
     for pkg, tmp of Package
       if pkg.indexOf("local-test") == 0
         splitPkg = pkg.split(":")
-        packagesUnderTest.push "#{splitPkg[1]}:#{splitPkg[2]}"
+        packageName = splitPkg[1]
+        packageName += ":#{splitPkg[2]}" if splitPkg[2]
+        packagesUnderTest.push packageName
 
     #TODO set list of packages, not the title
     ctrl.header.title(packagesUnderTest[0])
