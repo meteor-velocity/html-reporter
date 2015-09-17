@@ -8,7 +8,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.2-rc.15');
-  api.use('grigio:babel@0.1.6');
+  api.use('ecmascript');
   api.use('velocity:core@0.7.1', 'client');
 
   api.use([
@@ -20,11 +20,11 @@ Package.onUse(function(api) {
     'session'
   ], 'client');
 
-  api.addFiles('lib/reamplify.es6.js', 'client');
+  api.addFiles('lib/reamplify.js', 'client');
 
-  api.addFiles('lib/velocity.es6.js', 'client');
+  api.addFiles('lib/velocity.js', 'client');
   api.addFiles('lib/client-report.html', 'client');
-  api.addFiles('lib/client-report.es6.js', 'client');
+  api.addFiles('lib/client-report.js', 'client');
   api.addFiles('lib/velocity.import.less', 'client');
   api.addFiles('lib/client-report.less', 'client');
   api.addFiles('lib/status-widget.less', 'client');
