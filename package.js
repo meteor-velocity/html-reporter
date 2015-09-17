@@ -7,11 +7,18 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.2-rc.14');
+  api.versionsFrom('METEOR@1.2-rc.15');
   api.use('grigio:babel@0.1.6');
   api.use('velocity:core@0.7.1', 'client');
 
-  api.use(['underscore', 'templating','amplify@1.0.0', 'less'], 'client');
+  api.use([
+    'underscore',
+    'templating',
+    'amplify@1.0.0',
+    'less',
+    'jquery',
+    'session'
+  ], 'client');
 
   api.addFiles('lib/reamplify.es6.js', 'client');
 
