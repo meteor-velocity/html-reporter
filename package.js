@@ -17,7 +17,8 @@ Package.onUse(function(api) {
     'amplify@1.0.0',
     'less',
     'jquery',
-    'session'
+    'session',
+    'tracker'
   ], 'client');
 
   api.addFiles('lib/reamplify.js', 'client');
