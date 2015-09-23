@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.2.0.1');
   api.use('ecmascript');
-  api.use('velocity:core@0.10.0-rc.4', 'client');
+  api.use('velocity:core@0.10.0', 'client');
 
   api.use([
     'underscore',
