@@ -19,11 +19,11 @@
 
         {{> velocitySummary}}
 
+        {{> velocityControlPanel}}
+
         {{#each frameworks}}
           {{> velocityReports}}
         {{/each}}
-
-          {{> velocityControlPanel}}
 
         {{#if active 'showLogs'}}
             <div class="velocity-section-header">
