@@ -32,13 +32,6 @@
           {{> velocityLogs}}
         {{/if}}
 
-        {{#if active 'showFiles'}}
-            <div class="velocity-section-header">
-                <span class="velocity-section-name">Test files</span>
-            </div>
-          {{> velocityTestFiles}}
-        {{/if}}
-
         {{#if mochaPresent}}
             <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
                 <div class="velocity-section-header">
@@ -69,7 +62,6 @@
 <template name="velocityControlPanel">
     <div class="velocity-options">
         <button aria-label="Show passing tests" id="showSuccessful" class="btn-velocity control-toggle {{showActive 'showSuccessful'}}">Show passing tests</button>
-        <button aria-label="Show files" id="showFiles" class="btn-velocity control-toggle {{showActive 'showFiles'}}">Show files</button>
       {{#if mochaPresent}}
           <button aria-label="Show mocha iframe" id="showMochaIframe" class="btn-velocity control-toggle {{showActive 'showMochaIframe'}}">Show mocha iframe</button>
       {{/if}}
@@ -85,7 +77,7 @@
 <template name="velocityReports">
     <section class="velocity-report {{frameworkStatus}}">
         <div class="velocity-section-header">
-            <span class="velocity-section-name"><a href="{{mirrorUrl}}" target="_blank">{{name}} - mirror {{mirrorStatus}}</a> </span>
+            <span class="velocity-section-name">{{name}}</span>
         </div>
 
       {{#if isPassed frameworkStatus}}
@@ -93,16 +85,9 @@
       {{/if}}
 
       {{#unless frameworkTotalTestCount}}
-        {{#if noFrameworkFiles}}
-            <div class="velocity-notice-inline">
-                <p>It appears that you don't have any tests for this framework. Would you like to add some?</p>
-                <button aria-label="Add sample tests" class="btn-velocity copy-sample-tests">Add {{name}} sample tests</button>
-            </div>
-        {{else}}
-            <div class="velocity-loading">
-                <i class="velocity-icon-loading"></i>
-            </div>
-        {{/if}}
+        <div class="velocity-loading">
+          <i class="velocity-icon-loading"></i>
+        </div>
       {{/unless}}
 
       {{#each suites}}
