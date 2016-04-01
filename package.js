@@ -1,15 +1,15 @@
 Package.describe({
   name: 'velocity:html-reporter',
   summary: 'Reactive Velocity test reports in your app.',
-  version: '0.9.1',
+  version: '0.10.0',
   git: 'https://github.com/meteor-velocity/html-reporter.git',
-  debugOnly: true
+  testOnly: true
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.2.0.1');
+  api.versionsFrom('1.3');
   api.use('ecmascript');
-  api.use('velocity:core@0.10.0', 'client');
+  api.use('velocity:reports@1.0.0', 'client');
 
   api.use([
     'underscore',
