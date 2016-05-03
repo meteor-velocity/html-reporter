@@ -25,13 +25,6 @@
           {{> velocityReports}}
         {{/each}}
 
-        {{#if active 'showLogs'}}
-            <div class="velocity-section-header">
-                <span class="velocity-section-name">Logs</span>
-            </div>
-          {{> velocityLogs}}
-        {{/if}}
-
         {{#if mochaPresent}}
             <div class="velocity-iframe {{#if active 'showMochaIframe'}}visible{{/if}}">
                 <div class="velocity-section-header">
@@ -130,35 +123,6 @@
         </tr>
     {{/if}}
   {{/if}}
-</template>
-
-<template name="velocityLogs">
-    <div class="velocity-table-box">
-        <table id="velocityLogs" class="velocity-table">
-            <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Level</th>
-                <th>Message</th>
-                <th>Framework</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each logs}}
-              {{> velocityLog}}
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</template>
-
-<template name="velocityLog">
-    <tr class="{{result}}">
-        <td>{{timestamp}}</td>
-        <td>{{level}}</td>
-        <td>{{message}}</td>
-        <td>{{framework}}</td>
-    </tr>
 </template>
 
 <template name="velocityTestFiles">
